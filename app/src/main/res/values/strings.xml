@@ -7,4 +7,12 @@
     <string name="Visual_impairment">Visual impairment</string>
     <string name="Other_disability">Other disability</string>
     <string name="Dwarfism">Dwarfism</string>
+
+    <string name="Sign_In">Sign In</string>
+    <string name="Sign_Up">Sign Up</string>
+    <string name="Email">E-mail</string>
+    <string name="Name">Name</string>
+    <string name="Password">Password</string>
+    <string name="Create_Acc">Create Account</string>
+
 </resources>
