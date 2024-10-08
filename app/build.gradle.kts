@@ -5,12 +5,13 @@ plugins {
 }
 
 android {
+
     namespace = "com.example.myapplication"
     compileSdk = 34
 
     buildFeatures {
         viewBinding = true
-        dataBinding = true
+
     }
 
     defaultConfig {
