@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Sign_In">تسجيل الدخول</string>
+    <string name="Sign_Up">اشتراك</string>
+    <string name="Email">البريد الإلكتروني</string>
+    <string name="Password">كلمة المرور</string>
+    <string name="Create_Acc">إنشاء حساب</string>
+    <string name="Name">الاسم</string>
+</resources>
