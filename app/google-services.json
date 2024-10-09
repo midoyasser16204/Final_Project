@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "436756148534",
+    "project_id": "workability-cf4ac",
+    "storage_bucket": "workability-cf4ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436756148534:android:067e9cc1ae80c0a7aa0397",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClDuiMVsEJw_jXlE_2sIFutqFck1QNcT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
