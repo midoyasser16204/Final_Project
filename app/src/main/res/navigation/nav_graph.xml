@@ -13,10 +13,21 @@
         <action
             android:id="@+id/action_splashScreen_to_signIn"
             app:destination="@id/signIn" />
+        <action
+            android:id="@+id/action_splashScreen_to_signUp"
+            app:destination="@id/signUp" />
 
     </fragment>
     <fragment
         android:id="@+id/signIn"
         android:name="com.example.myapplication.SignIn"
-        android:label="SignIn" />
+        android:label="SignIn" >
+        <action
+            android:id="@+id/action_signIn_to_signUp"
+            app:destination="@id/signUp" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUp"
+        android:name="com.example.myapplication.SignUp"
+        android:label="SignUp" />
 </navigation>
