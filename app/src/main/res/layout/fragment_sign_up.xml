@@ -63,7 +63,7 @@
 
             <!-- Sign In Button -->
             <Button
-                android:id="@+id/SignUnButton"
+                android:id="@+id/SignUpButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#0f003e"
