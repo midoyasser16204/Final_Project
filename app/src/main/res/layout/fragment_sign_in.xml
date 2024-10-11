@@ -36,6 +36,7 @@
         android:hint="@string/Email"
         android:textColorHint="@color/white"
         tools:text="@string/Email"
+        android:textColor="@color/MainColor"
         android:layout_marginTop="30dp"
         android:padding="12dp"
         android:background="@drawable/rounded_edittext"
