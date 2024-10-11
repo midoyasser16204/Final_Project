@@ -19,56 +19,81 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 />
 
-            <!-- Email Input -->
-            <EditText
-                android:id="@+id/Email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/Email"
-                android:textColor="@color/MainColor"
-                android:textColorHint="@color/white"
+    <!-- Name Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Namelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/SignIn"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/MainColor"
+        android:hint="@string/Name"
+        android:textColorHint="@color/MainColor">
 
-                tools:text="@string/Email"
-                android:layout_marginTop="10dp"
-                android:padding="12dp"
-                android:background="@drawable/rounded_edittext"
-                app:layout_constraintTop_toBottomOf="@id/Name"/>
-            <!-- Name Input -->
-            <EditText
-                android:id="@+id/Name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/Name"
-                android:textColor="@color/MainColor"
-                android:textColorHint="@color/white"
-                tools:text="Name"
-                android:layout_marginTop="10dp"
-                android:padding="12dp"
-                android:background="@drawable/rounded_edittext"
-                app:layout_constraintTop_toBottomOf="@id/SignIn"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/MainColor"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Password Input -->
-            <EditText
-                android:id="@+id/Password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/Password"
-                tools:text="Password"
-                android:textColor="@color/MainColor"
-                android:textColorHint="@color/white"
-                app:layout_constraintTop_toBottomOf="@id/Email"
-                android:layout_marginTop="10dp"
-                android:padding="12dp"
-                android:background="@drawable/rounded_edittext"/>
+    <!-- Email Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Emaillayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/Namelayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/MainColor"
+        android:hint="@string/Email"
+        android:textColorHint="@color/MainColor">
 
-            <!-- Sign In Button -->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/MainColor"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Password Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Passwordlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/Emaillayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/MainColor"
+        android:hint="@string/Password"
+        android:textColorHint="@color/MainColor">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/MainColor"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- Sign In Button -->
             <Button
                 android:id="@+id/SignUpButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#0f003e"
                 android:text="@string/Sign_Up"
-                app:layout_constraintTop_toBottomOf="@id/Password"
+                app:layout_constraintTop_toBottomOf="@id/Passwordlayout"
                 android:layout_marginTop="20dp"/>
 
             <!-- Sign Up Button -->
