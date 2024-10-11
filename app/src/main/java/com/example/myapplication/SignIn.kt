@@ -72,9 +72,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.myapplication.databinding.FragmentSignInBinding
+
 import android.widget.Toast
 import com.example.myapplication.databinding.FragmentSignInBinding
+
 import com.google.firebase.auth.FirebaseAuth
 
 class SignInFragment : Fragment(), LanguageChangeListener {
@@ -85,30 +86,23 @@ class SignInFragment : Fragment(), LanguageChangeListener {
     private lateinit var languageChangeReceiver: BroadcastReceiver
 
 
-
-
-
-
-
-
-  lateinit var  signInBinding: FragmentSignInBinding
-  lateinit var  auth: FirebaseAuth
+    lateinit var auth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
 
     ): View {
-       auth= FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
         binding = FragmentSignInBinding.inflate(inflater, container, false)
-        sharedPreferences = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        sharedPreferences =
+            requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
         binding.languageSwitch.isChecked = sharedPreferences.getString("LANGUAGE", "en") == "ar"
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-      override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        signInBinding.SignInButton.setOnClickListener {
-            auth.signInWithEmailAndPassword(signInBinding.Email.toString(), signInBinding.Password.toString())
+        binding.SignInButton.setOnClickListener {
+            auth.signInWithEmailAndPassword(binding.Email.toString(), binding.Password.toString())
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
@@ -140,7 +134,7 @@ class SignInFragment : Fragment(), LanguageChangeListener {
         // Language switch logic
         binding.languageSwitch.setOnCheckedChangeListener { _, isChecked ->
             val newLanguage = if (isChecked) "ar" else "en"
-            (activity as? MainActivity)?.setLocalization(requireContext(),newLanguage)
+            (activity as? MainActivity)?.setLocalization(requireContext(), newLanguage)
         }
 
         // Observing the ViewModel for language changes
@@ -162,6 +156,7 @@ class SignInFragment : Fragment(), LanguageChangeListener {
 
         // Initially set views based on the current language
         updateUI(sharedPreferences.getString("LANGUAGE", "en") ?: "en")
+
     }
 
     override fun onLanguageChanged(languageCode: String) {
@@ -182,7 +177,8 @@ class SignInFragment : Fragment(), LanguageChangeListener {
     override fun onDestroyView() {
         super.onDestroyView()
         // Unregister BroadcastReceiver to avoid memory leaks
-        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(languageChangeReceiver)
+        LocalBroadcastManager.getInstance(requireContext())
+            .unregisterReceiver(languageChangeReceiver)
     }
 }
 

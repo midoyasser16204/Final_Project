@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +11,9 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.myapplication.databinding.FragmentSignUpBinding
 import android.widget.Toast
-import com.example.myapplication.databinding.FragmentSignUpBinding
+
 import com.google.firebase.auth.FirebaseAuth
+import kotlin.math.log
 
 class SignUp : Fragment() {
     private lateinit var navController: NavController
@@ -20,6 +22,7 @@ class SignUp : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        auth= FirebaseAuth.getInstance()
         binding = FragmentSignUpBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -29,10 +32,9 @@ class SignUp : Fragment() {
         navController = Navigation.findNavController(view)
         binding.SignUpButton.setOnClickListener {
             auth.createUserWithEmailAndPassword(
-                signUpBinding.Email.toString(),
-                signUpBinding.Password.toString()
-            )
-                .addOnCompleteListener(requireActivity()) { task ->
+                binding.Email.toString(),
+                binding.Password.toString()
+            ).addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
 
 
@@ -43,6 +45,7 @@ class SignUp : Fragment() {
                             Toast.LENGTH_SHORT,
                         ).show()
                     } else {
+                        Log.i("TAG", binding.Email.toString())
                         // If sign in fails, display a message to the user.
                         Toast.makeText(
                             requireContext(),
