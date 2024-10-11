@@ -5,27 +5,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import com.example.myapplication.databinding.FragmentSignUpBinding
 import android.widget.Toast
 import com.example.myapplication.databinding.FragmentSignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 
-
 class SignUp : Fragment() {
-
-    lateinit var signUpBinding: FragmentSignUpBinding
+    private lateinit var navController: NavController
+    lateinit var binding: FragmentSignUpBinding
     lateinit var auth: FirebaseAuth
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        signUpBinding = FragmentSignUpBinding.inflate(inflater, container, false)
-        return signUpBinding.root
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        binding = FragmentSignUpBinding.inflate(layoutInflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        signUpBinding.SignUnButton.setOnClickListener {
+        navController = Navigation.findNavController(view)
+        binding.SignUpButton.setOnClickListener {
             auth.createUserWithEmailAndPassword(
                 signUpBinding.Email.toString(),
                 signUpBinding.Password.toString()
@@ -50,8 +52,9 @@ class SignUp : Fragment() {
 
                     }
                 }
-
+         
         }
+
     }
 
 

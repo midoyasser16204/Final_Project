@@ -6,21 +6,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="16dp"
     android:background="@color/MainColor">
-<com.google.android.material.card.MaterialCardView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="16dp"
-    app:strokeColor="@color/MainColor"
-    app:cardCornerRadius="32dp">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/MainColor"
-        >
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mainlogo"
+            android:src="@drawable/mainlogo_removebg_preview"
             app:layout_constraintTop_toBottomOf="@id/Password"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -44,8 +34,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/Email"
-        android:textColor="@color/MainColor"
+        android:textColorHint="@color/white"
         tools:text="@string/Email"
+        android:textColor="@color/MainColor"
         android:layout_marginTop="30dp"
         android:padding="12dp"
         android:background="@drawable/rounded_edittext"
@@ -57,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/Password"
+        android:textColorHint="@color/white"
         tools:text="Password"
         android:textColor="@color/MainColor"
         app:layout_constraintTop_toBottomOf="@id/Email"
@@ -82,6 +74,15 @@
         android:text="@string/Create_Acc"
         app:layout_constraintTop_toBottomOf="@id/SignInButton"
         android:backgroundTint="#0f003e"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+    <!-- Language Switch -->
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/languageSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change_Language"
+        app:layout_constraintTop_toBottomOf="@id/btnSignUp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
