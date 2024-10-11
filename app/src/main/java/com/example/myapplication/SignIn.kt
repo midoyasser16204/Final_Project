@@ -67,11 +67,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import androidx.fragment.app.activityViewModels
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.myapplication.databinding.FragmentSignInBinding
+import android.widget.Toast
+import com.example.myapplication.databinding.FragmentSignInBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class SignInFragment : Fragment(), LanguageChangeListener {
     private lateinit var navController: NavController
@@ -80,10 +84,21 @@ class SignInFragment : Fragment(), LanguageChangeListener {
     private val languageViewModel: LanguageViewModel by activityViewModels()
     private lateinit var languageChangeReceiver: BroadcastReceiver
 
+
+
+
+
+
+
+
+  lateinit var  signInBinding: FragmentSignInBinding
+  lateinit var  auth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View {
+       auth= FirebaseAuth.getInstance()
         binding = FragmentSignInBinding.inflate(inflater, container, false)
         sharedPreferences = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
         binding.languageSwitch.isChecked = sharedPreferences.getString("LANGUAGE", "en") == "ar"
@@ -91,6 +106,28 @@ class SignInFragment : Fragment(), LanguageChangeListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+      override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        signInBinding.SignInButton.setOnClickListener {
+            auth.signInWithEmailAndPassword(signInBinding.Email.toString(), signInBinding.Password.toString())
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+
+                        val user = auth.currentUser
+
+                    } else {
+                        // If sign in fails, display a message to the user.
+
+                        Toast.makeText(
+                            requireContext(),
+                            "Authentication failed.",
+                            Toast.LENGTH_SHORT,
+                        ).show()
+
+                    }
+                }
+
+        }
         super.onViewCreated(view, savedInstanceState)
 
         navController = Navigation.findNavController(view)
@@ -148,3 +185,5 @@ class SignInFragment : Fragment(), LanguageChangeListener {
         LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(languageChangeReceiver)
     }
 }
+
+    

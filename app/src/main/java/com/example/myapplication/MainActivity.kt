@@ -47,9 +47,14 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.myapplication.databinding.ActivityMainBinding
+
 import java.util.Locale
 
+import com.google.firebase.auth.FirebaseAuth
+
+
 class MainActivity : AppCompatActivity() {
+    lateinit var  auth: FirebaseAuth
     private val binding by lazy(LazyThreadSafetyMode.NONE) {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -61,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         loadLocalization()
 
         setContentView(binding.root)
+
         val navHost = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHost.navController
     }
@@ -99,3 +105,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
+        auth = FirebaseAuth.getInstance()
+    }
+
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+    if (currentUser != null) {
+
+    }
+    }
+}
+
