@@ -141,6 +141,7 @@ class SignInFragment : Fragment(), LanguageChangeListener {
         // Update other views as needed based on language
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         // Unregister BroadcastReceiver to avoid memory leaks
