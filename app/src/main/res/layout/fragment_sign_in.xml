@@ -30,6 +30,7 @@
 
     <!-- Email Input -->
     <EditText
+         android:inputType="textEmailAddress"
         android:id="@+id/Email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,6 +44,7 @@
 
     <!-- Password Input -->
     <EditText
+        android:inputType="textPassword"
         android:id="@+id/Password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -78,7 +80,7 @@
         android:id="@+id/languageSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Change_Language"
+        android:text="@string/change_language"
         app:layout_constraintTop_toBottomOf="@id/btnSignUp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

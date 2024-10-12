@@ -1,39 +1,52 @@
 package com.example.myapplication
 
-import LanguageViewModel
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.activity.viewModels
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
 import com.example.myapplication.databinding.ActivityMainBinding
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var navController: NavController
     private val binding by lazy(LazyThreadSafetyMode.NONE) {
         ActivityMainBinding.inflate(layoutInflater)
     }
     private lateinit var sharedPreferences: SharedPreferences
-    private val languageViewModel: LanguageViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("OnCreate", "Activity Recreated")
+
+        // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+
+        // Retrieve and set the saved language
         val savedLanguage = sharedPreferences.getString("LANGUAGE", "en") ?: "en"
         setLocalization(savedLanguage)
+
         setContentView(binding.root)
+
+        // Initialize NavController here if necessary
+        // navController = ...
     }
 
     fun setLocalization(languageCode: String) {
+        val config = resources?.configuration
         val locale = Locale(languageCode)
         Locale.setDefault(locale)
-        val config = resources.configuration
-        config.setLocale(locale)
-        createConfigurationContext(config)
-        resources.updateConfiguration(config, resources.displayMetrics)
+        config?.setLocale(locale)
+        resources?.updateConfiguration(config, resources.displayMetrics)
+
+        // Save the selected language to SharedPreferences
         sharedPreferences.edit().putString("LANGUAGE", languageCode).apply()
-        languageViewModel.setLanguage(languageCode)
+
+
+    }
+
+    fun applyConfiguration(languageCode: String) {
+        setLocalization(languageCode)
+        recreate()
     }
 }
+

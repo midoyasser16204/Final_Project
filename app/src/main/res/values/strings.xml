@@ -8,5 +8,6 @@
     <string name="Name">Name</string>
     <string name="Password">Password</string>
     <string name="Create_Acc">Create Account</string>
+    <string name="change_language">Change_Language</string>
 
 </resources>
