@@ -29,5 +29,13 @@
     <fragment
         android:id="@+id/signUp"
         android:name="com.example.myapplication.SignUp"
-        android:label="SignUp" />
+        android:label="SignUp" >
+        <action
+            android:id="@+id/action_signUp_to_select_role"
+            app:destination="@id/select_role" />
+    </fragment>
+    <fragment
+        android:id="@+id/select_role"
+        android:name="com.example.myapplication.select_role"
+        android:label="select_role" />
 </navigation>

@@ -50,6 +50,7 @@ class SignUp : Fragment() {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Toast.makeText(requireContext(), "Sign-Up Successful", Toast.LENGTH_SHORT).show()
+                navController.navigate(R.id.action_signUp_to_select_role)
                 // After sign-up, navigate to the Sign-In fragment
 
             } else {
