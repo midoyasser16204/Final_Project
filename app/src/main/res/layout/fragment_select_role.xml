@@ -2,7 +2,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     android:padding="16dp"
     android:background="@color/MainColor">
 
@@ -18,7 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Card for Job Seeker -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardJobSeeker"
         android:layout_width="match_parent"
@@ -37,7 +35,6 @@
             android:padding="16dp"
             android:gravity="center_vertical">
 
-            <!-- Icon for Job Seeker -->
             <ImageView
                 android:id="@+id/iconJobSeeker"
                 android:layout_width="40dp"
@@ -45,7 +42,6 @@
                 android:src="@drawable/jobseeker"
                 android:contentDescription="@string/Job_Seeker" />
 
-            <!-- Text for Job Seeker -->
             <TextView
                 android:id="@+id/textJobSeeker"
                 android:layout_width="wrap_content"
@@ -57,7 +53,6 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Card for Company -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardCompany"
         android:layout_width="match_parent"
@@ -76,7 +71,6 @@
             android:padding="16dp"
             android:gravity="center_vertical">
 
-            <!-- Icon for Company -->
             <ImageView
                 android:id="@+id/iconCompany"
                 android:layout_width="40dp"
@@ -84,7 +78,6 @@
                 android:src="@drawable/company"
                 android:contentDescription="@string/Company" />
 
-            <!-- Text for Company -->
             <TextView
                 android:id="@+id/textCompany"
                 android:layout_width="wrap_content"
