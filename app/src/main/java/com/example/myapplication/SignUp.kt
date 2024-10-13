@@ -11,6 +11,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.myapplication.databinding.FragmentSignUpBinding
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import com.example.myapplication.viewmodels.UserViewModel
 
 import com.google.firebase.auth.FirebaseAuth
 import kotlin.math.log
@@ -19,6 +21,7 @@ class SignUp : Fragment() {
     private lateinit var navController: NavController
     lateinit var binding: FragmentSignUpBinding
     lateinit var auth: FirebaseAuth
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +53,8 @@ class SignUp : Fragment() {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Toast.makeText(requireContext(), "Sign-Up Successful", Toast.LENGTH_SHORT).show()
+                userViewModel.Uid=auth.currentUser?.uid
+                userViewModel.userData
                 navController.navigate(R.id.action_signUp_to_select_role)
                 // After sign-up, navigate to the Sign-In fragment
 

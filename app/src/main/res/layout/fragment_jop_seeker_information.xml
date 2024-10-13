@@ -1,14 +1,206 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".jop_seeker_information">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <variable
+            name="user"
+            type="com.example.myapplication.data.model.DisabilityData" /> <!-- Adjust the package name accordingly -->
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/MainColor"
+        android:padding="16dp">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Profile"
+            android:textColor="@color/ThirdlyColor"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Name Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Namelayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/Name"
+            android:textColorHint="@color/MainColor"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/MainColor"
+            app:layout_constraintTop_toBottomOf="@id/profile">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:inputType="text"
+                android:padding="12dp"
+                android:text="@={user.name}"
+                android:textColor="@color/MainColor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Age Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Agelayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/Age"
+            android:textColorHint="@color/MainColor"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/MainColor"
+            app:layout_constraintTop_toBottomOf="@id/Namelayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:inputType="number"
+                android:padding="12dp"
+                android:text="@{String.valueOf(user.age)}"
+                android:textColor="@color/MainColor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Phone Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Phonelayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/Phone"
+            android:textColorHint="@color/MainColor"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/MainColor"
+            app:layout_constraintTop_toBottomOf="@id/Agelayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:inputType="phone"
+                android:padding="12dp"
+                android:text="@={user.phone}"
+                android:textColor="@color/MainColor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Email Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Emaillayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/Email"
+            android:textColorHint="@color/MainColor"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/MainColor"
+            app:layout_constraintTop_toBottomOf="@id/Phonelayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:inputType="textEmailAddress"
+                android:padding="12dp"
+                android:text="@={user.email}"
+                android:textColor="@color/MainColor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Skills Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Skilllayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/Skill"
+            android:textColorHint="@color/MainColor"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/MainColor"
+            app:layout_constraintTop_toBottomOf="@id/Emaillayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/skill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext"
+                android:inputType="text"
+                android:padding="12dp"
+                android:text="@={user.skill}"
+                android:textColor="@color/MainColor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Disability TextView -->
+        <TextView
+            android:id="@+id/disability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/Disability"
+            android:textColor="@color/ThirdlyColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Skilllayout" />
+
+        <!-- Disability Spinner -->
+        <Spinner
+            android:id="@+id/disabilitySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="40dp"
+            app:layout_constraintTop_toBottomOf="@id/disability" />
+
+        <!-- Upload CV CardView -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/uploadCv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            app:cardBackgroundColor="@color/MainColor"
+            app:cardElevation="4dp"
+            app:layout_constraintTop_toBottomOf="@id/disabilitySpinner"
+            app:strokeColor="@color/SecondaryColor"
+            app:strokeWidth="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/Upload_CV"
+                android:textColor="@color/ThirdlyColor"
+                android:textSize="18sp" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/Save"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/ThirdlyColor"
+            app:layout_constraintTop_toBottomOf="@id/uploadCv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

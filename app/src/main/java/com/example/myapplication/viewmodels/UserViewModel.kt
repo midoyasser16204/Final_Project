@@ -7,6 +7,7 @@ import com.example.myapplication.data.model.UserData
 
 class UserViewModel : ViewModel() {
     // LiveData to hold user data
+    var Uid: String? = null
     private val _userData = MutableLiveData<UserData>()
     val userData: LiveData<UserData> = _userData
 
