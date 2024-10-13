@@ -4,5 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="MainColor">#a5dee0</color>
     <color name="SecondaryColor">#16325B</color>
+    <color name="ThirdlyColor">#F2F2F2</color>
 
 </resources>
