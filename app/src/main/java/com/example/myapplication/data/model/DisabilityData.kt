@@ -1,5 +1,6 @@
 package com.example.myapplication.data.model
 
+import android.location.Address
 import java.io.Serializable
 
 data class DisabilityData(
@@ -9,5 +10,6 @@ data class DisabilityData(
     var phone: String = "",
     var email: String = "",
     var skill: String = "",
-    var disability: String = ""
+    var disability: String = "",
+    var address: String = ""
 ):Serializable

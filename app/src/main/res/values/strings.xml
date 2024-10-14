@@ -16,10 +16,17 @@
     <string name="Choose_Role">Choose Role</string>
     <string name="Job_Seeker">Job Seekers</string>
     <string name="Company">Company</string>
+    <string name="Address">Address</string>
     <string name="Save">Save</string>
     <string name="Profile">Profile</string>
     <string name="Details">Details</string>
+    <string name="field_apply">Apply</string>
     <string name="Upload_CV">Drag your CV</string>
+    <string name="login_heading">Welcome Back</string>
+    <string name="login_sub_heading">Let’s Login. Fill in your details to apply for jobs!</string>
+    <string name="signup_sub_heading">Let’s Signup. Fill in your details to apply for jobs!</string>
+    <string name="EnterProfile">Let’s begin edit your profile</string>
+    <string name="lan">ع</string>
     <string-array name="Disability_Array">
         <item>Motor Impairment</item>
         <item>Visual Impairment</item>
@@ -27,9 +34,5 @@
         <item>Mental Impairment</item>
         <item>Dwarfism Impairment</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!-- TODO: Remove or change this placeholder text -->
-
 
 </resources>

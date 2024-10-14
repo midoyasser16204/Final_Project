@@ -31,7 +31,7 @@ class SignIn : Fragment() {
         binding = FragmentSignInBinding.inflate(inflater, container, false)
 
         // Set the switch state based on saved language
-        binding.languageSwitch.isChecked = sharedPreferences.getString("LANGUAGE", "en") == "ar"
+        binding.language.isChecked = sharedPreferences.getString("LANGUAGE", "en") == "ar"
 
         return binding.root
     }
@@ -45,12 +45,13 @@ class SignIn : Fragment() {
         }
 
         // Set up switch listener
-        binding.languageSwitch.setOnCheckedChangeListener { _, isChecked ->
-            val newLanguage = if (isChecked) "ar" else "en"
+        binding.language.setOnClickListener {
+            val currentLanguage = sharedPreferences.getString("LANGUAGE", "en") ?: "en"
+            val newLanguage = if (currentLanguage == "en") "ar" else "en"
             (activity as? MainActivity)?.applyConfiguration(newLanguage)
             Log.d("LanguageSwitch", "Language changed to: $newLanguage")
-
         }
+
     }
 
 

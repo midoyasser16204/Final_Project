@@ -31,7 +31,6 @@ class jop_seeker_information : Fragment() {
         firestore = FirebaseFirestore.getInstance()
         // Inflate the layout for this fragment
         binding = FragmentJopSeekerInformationBinding.inflate(inflater, container, false)
-
         return binding.root
 
     }
@@ -44,6 +43,7 @@ class jop_seeker_information : Fragment() {
             val phone = binding.phone.text.toString()
             val email = binding.Email.text.toString()
             val skill = binding.skill.text.toString()
+            val address = binding.address.text.toString()
             val selectedDisability = binding.disabilitySpinner.selectedItem.toString()
 
             // Create the DisabilityData object
@@ -54,6 +54,7 @@ class jop_seeker_information : Fragment() {
                 email = email,
                 skill = skill,
                 disability = selectedDisability,
+                address = address
             )
             saveDisabilityData(disabilityData)
 

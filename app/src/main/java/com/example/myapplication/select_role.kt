@@ -21,7 +21,7 @@ lateinit var binding: FragmentSelectRoleBinding
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-      binding=FragmentSelectRoleBinding.inflate(inflater,container,false)
+        binding=FragmentSelectRoleBinding.inflate(inflater,container,false)
         return binding.root
     }
     override  fun onViewCreated(view: View, savedInstanceState: Bundle?) {

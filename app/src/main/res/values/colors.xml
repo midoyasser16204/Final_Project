@@ -34,4 +34,18 @@
     <!-- Button Text Color -->
     <color name="buttonTextColor">#FFFFFF</color>
 
+    <color name="text_color">#0D0140</color>
+    <color name="button_color">#0D0140</color>
+    <color name="box_stroke_color">#0D0140</color>
+    <color name="icon_tint">#0D0140</color>
+    <color name="button_text_color">#F9F9F9</color>
+    <color name="subheading_color">#524B6B</color>
+    <color name="background_color">#F9F9F9</color>
+    <color name="company_card_background">#FF96CFFA</color>
+    <color name="job_applied_card_background">#FFBE7E</color>
+    <color name="power_spinner_arrow_tint">#0D0140</color>
+    <color name="power_spinner_border_active">#0D0140</color>
+    <color name="power_spinner_selector">#0D0140</color>
+    <color name="card_background">#F9F9F9</color>
+
 </resources>
