@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_signUp_to_select_role"
             app:destination="@id/select_role" />
+        <action
+            android:id="@+id/action_signUp_to_signIn"
+            app:destination="@id/signIn" />
     </fragment>
     <fragment
         android:id="@+id/select_role"
