@@ -1,4 +1,4 @@
 package com.example.myapplication.data.model
 
-class model {
+class Model {
 }

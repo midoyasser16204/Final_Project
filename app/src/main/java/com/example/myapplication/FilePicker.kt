@@ -17,7 +17,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
-class FilePickerFragment : Fragment() {
+class FilePicker : Fragment() {
 
     private lateinit var pdfPreview: ImageView
     private lateinit var profileImageView: ImageView
