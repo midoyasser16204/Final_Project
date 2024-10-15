@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashScreen">
+    app:startDestination="@id/filePickerFragment">
 
     <fragment
         android:id="@+id/splashScreen"
@@ -47,4 +47,8 @@
         android:name="com.example.myapplication.jop_seeker_information"
         android:label="fragment_jop_seeker_information"
         tools:layout="@layout/fragment_jop_seeker_information" />
+    <fragment
+        android:id="@+id/filePickerFragment"
+        android:name="com.example.myapplication.FilePickerFragment"
+        android:label="FilePickerFragment" />
 </navigation>

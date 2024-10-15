@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FilePickerFragment">
+
+    <!-- Button to Pick PDF -->
+    <Button
+        android:id="@+id/pickPdfButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload CV"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp" />
+
+    <!-- Button to Pick Profile Picture -->
+    <Button
+        android:id="@+id/pickImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload Profile Picture"
+        app:layout_constraintTop_toBottomOf="@id/pickPdfButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- PDF Preview (Initially Hidden) -->
+    <ImageView
+        android:id="@+id/pdfPreview"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:contentDescription="PDF Preview"
+        android:src="@drawable/ic_pdf_placeholder"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/pickImageButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Profile Picture Preview (Initially Hidden) -->
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="Profile Picture Preview"
+        android:visibility="gone"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@id/pdfPreview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

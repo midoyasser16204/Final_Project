@@ -11,8 +11,6 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.myapplication.databinding.FragmentSignUpBinding
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
-import com.example.myapplication.viewmodels.UserViewModel
 
 import com.google.firebase.auth.FirebaseAuth
 import kotlin.math.log
@@ -21,13 +19,10 @@ class SignUp : Fragment() {
     private lateinit var navController: NavController
     lateinit var binding: FragmentSignUpBinding
     lateinit var auth: FirebaseAuth
-    private val userViewModel: UserViewModel by activityViewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        auth = FirebaseAuth.getInstance()
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        auth= FirebaseAuth.getInstance()
         binding = FragmentSignUpBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -36,36 +31,33 @@ class SignUp : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         binding.SignUpButton.setOnClickListener {
-            val email = binding.Email.text.toString().trim()
-            val password = binding.Password.text.toString().trim()
+            auth.createUserWithEmailAndPassword(
+                binding.Email.toString(),
+                binding.Password.toString()
+            ).addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
 
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                signUpUser(email, password)
-            } else {
-                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
-            }
+
+                        val user = auth.currentUser
+                        Toast.makeText(
+                            requireContext(),
+                            "Authentication success.",
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                    } else {
+                        Log.i("TAG", binding.Email.toString())
+                        // If sign in fails, display a message to the user.
+                        Toast.makeText(
+                            requireContext(),
+                            "Authentication failed.",
+                            Toast.LENGTH_SHORT,
+                        ).show()
+
+                    }
+                }
+         
         }
 
-    }
-
-    private fun signUpUser(email: String, password: String) {
-
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Toast.makeText(requireContext(), "Sign-Up Successful", Toast.LENGTH_SHORT).show()
-                userViewModel.Uid=auth.currentUser?.uid
-                userViewModel.userData
-                navController.navigate(R.id.action_signUp_to_select_role)
-                // After sign-up, navigate to the Sign-In fragment
-
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Sign-Up Failed: ${task.exception?.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
     }
 
 
