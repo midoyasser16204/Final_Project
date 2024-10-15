@@ -16,6 +16,13 @@
     <string name="Company">الشركة</string>
     <string name="Save">حفظ</string>
     <string name="Profile">الصفحة الشخصية</string>
+    <string name="CompanyName">اسم الشركة</string>
+    <string name="RegistrationNumber">رقم التسجيل</string>
+    <string name="Location">الموقع</string>
+    <string name="URL">عنوان الموقع الالكتروني</string>
+    <string name="Notification">الإشعارات</string>
+    <string name="Hello">مرحبا</string>
+    <string name="Disc">التفاصيل</string>
     <string name="Details">التفاصيل</string>
     <string name="Address">العنوان</string>
     <string name="field_apply">تطبيق</string>
@@ -32,5 +39,19 @@
         <item>إعاقة ذهنية</item>
         <item>إعاقة التقزم</item>
     </string-array>
+    <string-array name="Company_Array">
+        <item>تكنولوجيا</item>
+        <item>الرعاية الصحية</item>
+        <item>المالية</item>
+        <item>التعليم</item>
+        <item>التصنيع</item>
+        <item>التجزئة</item>
+        <item>الضيافة</item>
+        <item>البناء</item>
+        <item>النقل</item>
+        <item>الترفيه</item>
+        </string-array>
+
+
 
 </resources>

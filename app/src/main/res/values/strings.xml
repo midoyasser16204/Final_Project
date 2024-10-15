@@ -17,6 +17,13 @@
     <string name="Job_Seeker">Job Seekers</string>
     <string name="Company">Company</string>
     <string name="Address">Address</string>
+    <string name="CompanyName">Company Name</string>
+    <string name="RegistrationNumber">Registration Number</string>
+    <string name="Location">Location</string>
+    <string name="URL">Website URL</string>
+    <string name="Disc">Description</string>
+    <string name="Hello">Hello</string>
+    <string name="Notification">Notification</string>
     <string name="Save">Save</string>
     <string name="Profile">Profile</string>
     <string name="Details">Details</string>
@@ -34,7 +41,17 @@
         <item>Mental Impairment</item>
         <item>Dwarfism Impairment</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="Company_Array">
+        <item>Technology</item>
+        <item>Healthcare</item>
+        <item>Finance</item>
+        <item>Education</item>
+        <item>Manufacturing</item>
+        <item>Retail</item>
+        <item>Hospitality</item>
+        <item>Construction</item>
+        <item>Transportation</item>
+        <item>Entertainment</item>
+    </string-array>
 
 </resources>
