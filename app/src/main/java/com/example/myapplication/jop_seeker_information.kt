@@ -38,7 +38,8 @@ class jop_seeker_information : Fragment() {
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             uri?.let {
                 selectedPdfUri = it
-                showPdfPreview()
+                uploadPdf(it, createDisabilityData()) // رفع الـ PDF عند تحديده
+                showPdfPreview() // إظهار المعاينة
             }
         }
 
@@ -87,43 +88,44 @@ class jop_seeker_information : Fragment() {
     }
 
     private fun saveUserData() {
-        val name = binding.Name.text.toString()
-        val age = binding.age.text.toString().toIntOrNull() ?: 0
-        val phone = binding.phone.text.toString()
-        val email = binding.Email.text.toString()
-        val skill = binding.skill.text.toString()
-        val address = binding.address.text.toString()
-        val selectedDisability = binding.disabilitySpinner.selectedItem.toString()
+        val disabilityData = createDisabilityData() // إنشاء بيانات الإعاقة
 
-        val disabilityData = DisabilityData(
-            name = name, age = age, phone = phone, email = email,
-            skill = skill, disability = selectedDisability, address = address
-        )
-
-        // رفع الصورة للملف الشخصي لو موجود
+        // رفع الصورة الشخصية إذا كانت موجودة
         selectedImageUri?.let {
             uploadProfileImage(it, disabilityData)
         } ?: run {
             if (selectedPdfUri != null) {
-                uploadPdfToFirebase(selectedPdfUri!!, disabilityData)
+                uploadPdf(selectedPdfUri!!, disabilityData) // رفع الـ PDF إذا كان محدد
             } else {
-                saveDisabilityData(disabilityData, pdfUrl = null)
+                saveDisabilityData(disabilityData, pdfUrl = null) // حفظ البيانات بدون PDF
             }
         }
     }
 
-    private fun uploadPdfToFirebase(pdfUri: Uri, disabilityData: DisabilityData) {
+    private fun createDisabilityData(): DisabilityData {
+        return DisabilityData(
+            name = binding.Name.text.toString(),
+            age = binding.age.text.toString().toIntOrNull() ?: 0,
+            phone = binding.phone.text.toString(),
+            email = binding.Email.text.toString(),
+            skill = binding.skill.text.toString(),
+            address = binding.address.text.toString(),
+            disability = binding.disabilitySpinner.selectedItem.toString()
+        )
+    }
+
+    private fun uploadPdf(pdfUri: Uri, disabilityData: DisabilityData) {
         val uid = userViewModel.Uid.toString()
         val storageRef = storage.reference.child("user_cvs/$uid/${UUID.randomUUID()}.pdf")
 
         storageRef.putFile(pdfUri)
             .addOnSuccessListener {
                 storageRef.downloadUrl.addOnSuccessListener { uri ->
-                    saveDisabilityData(disabilityData, uri.toString())
+                    saveDisabilityData(disabilityData, uri.toString()) // حفظ بيانات الإعاقة مع رابط الـ PDF
                 }
             }
             .addOnFailureListener {
-                Toast.makeText(requireContext(), "Failed to upload PDF", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "فشل في رفع الـ PDF", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -136,11 +138,11 @@ class jop_seeker_information : Fragment() {
                 storageRef.downloadUrl.addOnSuccessListener { downloadUri ->
                     // هنا ممكن تخزن الـdownloadUri في Firestore مع بيانات المستخدم
                     saveDisabilityData(disabilityData, pdfUrl = null)
-                    Toast.makeText(requireContext(), "Profile Image Uploaded!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "تم رفع صورة البروفايل!", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener {
-                Toast.makeText(requireContext(), "Failed to upload image", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "فشل في رفع الصورة", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -154,11 +156,11 @@ class jop_seeker_information : Fragment() {
 
         userDoc.set(dataMap)
             .addOnSuccessListener {
-                Toast.makeText(context, "Data saved successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "تم حفظ البيانات بنجاح", Toast.LENGTH_SHORT).show()
                 findNavController().navigateUp()
             }
             .addOnFailureListener {
-                Toast.makeText(context, "Failed to save data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "فشل في حفظ البيانات", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -176,7 +178,7 @@ class jop_seeker_information : Fragment() {
 
     private fun showPdfPreview() {
         binding.pdfPreview.visibility = View.VISIBLE
-        Toast.makeText(requireContext(), "PDF selected!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "تم اختيار الـ PDF!", Toast.LENGTH_SHORT).show()
     }
 
     private fun openPdf() {
@@ -186,7 +188,7 @@ class jop_seeker_information : Fragment() {
                 flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
             }
             startActivity(intent)
-        } ?: Toast.makeText(requireContext(), "No PDF selected", Toast.LENGTH_SHORT).show()
+        } ?: Toast.makeText(requireContext(), "لا يوجد PDF محدد", Toast.LENGTH_SHORT).show()
     }
 
     private fun requestPermissionsForPdf() {
@@ -220,7 +222,7 @@ class jop_seeker_information : Fragment() {
         if (requestCode == PERMISSION_REQUEST_CODE && grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
             // Permissions granted; no further action required
         } else {
-            Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "تم رفض الإذن", Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -24,7 +24,7 @@ class company_home_screen : Fragment() {
 
         // Navigate to CompanyHome when the button is clicked
         binding.JobSeekercard.setOnClickListener {
-            findNavController().navigate(R.id.action_companyHomeScreen3_to_companyHome)
+//            findNavController().navigate(R.id.action_companyHomeScreen3_to_companyHome)
         }
     }
 }
