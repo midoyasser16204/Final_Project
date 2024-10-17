@@ -10,6 +10,6 @@
         android:label="jop_seeker_information" />
     <fragment
         android:id="@+id/nav_not"
-        android:name="com.example.myapplication.disability_notification"
+        android:name="com.example.myapplication.DisabilityNotificationFragment"
         android:label="disability_notification" />
 </navigation>
