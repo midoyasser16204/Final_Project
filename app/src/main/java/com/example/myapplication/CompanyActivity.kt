@@ -30,6 +30,7 @@ class CompanyActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
         // Set up item selection listener
+
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_job_seekers -> {
