@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_disability"
+    app:startDestination="@id/nav_profile">
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.myapplication.jop_seeker_information"
+        android:label="jop_seeker_information" />
+    <fragment
+        android:id="@+id/nav_not"
+        android:name="com.example.myapplication.disability_notification"
+        android:label="disability_notification" />
+</navigation>

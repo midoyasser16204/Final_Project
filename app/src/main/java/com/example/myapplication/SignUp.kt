@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import androidx.navigation.Navigation
 import com.example.myapplication.databinding.FragmentSignUpBinding
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.myapplication.viewmodels.UserViewModel
 
 import com.google.firebase.auth.FirebaseAuth
@@ -55,8 +57,10 @@ class SignUp : Fragment() {
                 Toast.makeText(requireContext(), "Sign-Up Successful", Toast.LENGTH_SHORT).show()
                 userViewModel.Uid=auth.currentUser?.uid
                 userViewModel.userData
-                navController.navigate(R.id.action_signUp_to_signIn)
-                // After sign-up, navigate to the Sign-In fragment
+                val intent = Intent(requireContext(), CompanyActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+                    //findNavController().navigate(R.id.action_signUp_to_signIn)
 
             } else {
                 Toast.makeText(

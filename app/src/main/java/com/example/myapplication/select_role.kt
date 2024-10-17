@@ -30,7 +30,7 @@ lateinit var binding: FragmentSelectRoleBinding
          //  findNavController().navigate(R.id.action_selection_to_employerHome)
         }
         binding.cardJobSeeker.setOnClickListener {
-            findNavController().navigate(R.id.action_select_role_to_jop_seeker_information)
+            //findNavController().navigate(R.id.action_select_role_to_jop_seeker_information)
         }
     }
 

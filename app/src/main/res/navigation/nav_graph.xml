@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/jop_seeker_information">
+    app:startDestination="@id/splashScreen">
 
     <fragment
         android:id="@+id/splashScreen"
@@ -40,14 +40,5 @@
     <fragment
         android:id="@+id/select_role"
         android:name="com.example.myapplication.select_role"
-        android:label="select_role" >
-        <action
-            android:id="@+id/action_select_role_to_jop_seeker_information"
-            app:destination="@id/jop_seeker_information" />
-    </fragment>
-    <fragment
-        android:id="@+id/jop_seeker_information"
-        android:name="com.example.myapplication.jop_seeker_information"
-        android:label="fragment_jop_seeker_information"
-        tools:layout="@layout/fragment_jop_seeker_information" />
+        android:label="select_role" />
 </navigation>
