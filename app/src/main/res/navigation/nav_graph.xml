@@ -40,5 +40,13 @@
     <fragment
         android:id="@+id/select_role"
         android:name="com.example.myapplication.select_role"
-        android:label="select_role" />
+        android:label="select_role" >
+        <action
+            android:id="@+id/from_role_to_jopSekerInformation"
+            app:destination="@id/jop_seeker_information" />
+    </fragment>
+    <fragment
+        android:id="@+id/jop_seeker_information"
+        android:name="com.example.myapplication.jop_seeker_information"
+        android:label="jop_seeker_information" />
 </navigation>

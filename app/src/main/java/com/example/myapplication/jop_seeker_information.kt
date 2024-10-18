@@ -20,6 +20,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.myapplication.data.model.DisabilityData
 import com.example.myapplication.databinding.FragmentJopSeekerInformationBinding
 import com.example.myapplication.viewmodels.UserViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
@@ -29,6 +30,7 @@ class jop_seeker_information : Fragment() {
     lateinit var binding: FragmentJopSeekerInformationBinding
     private lateinit var firestore: FirebaseFirestore
     private lateinit var storage: FirebaseStorage
+    lateinit var auth: FirebaseAuth
     private val userViewModel: UserViewModel by activityViewModels()
 
     private var selectedPdfUri: Uri? = null
@@ -55,6 +57,7 @@ class jop_seeker_information : Fragment() {
         super.onCreate(savedInstanceState)
         firestore = FirebaseFirestore.getInstance()
         storage = FirebaseStorage.getInstance()
+        auth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateView(
@@ -147,8 +150,8 @@ class jop_seeker_information : Fragment() {
     }
 
     private fun saveDisabilityData(disabilityData: DisabilityData, pdfUrl: String?) {
-        val uid = userViewModel.Uid.toString()
-        val userDoc = firestore.collection("disabilityData").document(uid)
+        val uid = auth.currentUser?.uid
+        val userDoc = firestore.collection("disabilityData").document(uid.toString())
 
         val dataMap = disabilityData.toMap().apply {
             pdfUrl?.let { put("pdfUrl", it) }

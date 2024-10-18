@@ -57,10 +57,10 @@ class SignUp : Fragment() {
                 Toast.makeText(requireContext(), "Sign-Up Successful", Toast.LENGTH_SHORT).show()
                 userViewModel.Uid=auth.currentUser?.uid
                 userViewModel.userData
-                val intent = Intent(requireContext(), CompanyActivity::class.java)
-                startActivity(intent)
-                requireActivity().finish()
-                    //findNavController().navigate(R.id.action_signUp_to_signIn)
+//                val intent = Intent(requireContext(), CompanyActivity::class.java)
+//                startActivity(intent)
+//                requireActivity().finish()
+                    findNavController().navigate(R.id.action_signUp_to_select_role)
 
             } else {
                 Toast.makeText(
