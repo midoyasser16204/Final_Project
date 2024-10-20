@@ -27,7 +27,7 @@ lateinit var binding: FragmentSelectRoleBinding
     override  fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.cardCompany.setOnClickListener {
-         //  findNavController().navigate(R.id.action_selection_to_employerHome)
+           findNavController().navigate(R.id.action_select_role_to_company_information)
         }
         binding.cardJobSeeker.setOnClickListener {
             findNavController().navigate(R.id.from_role_to_jopSekerInformation)

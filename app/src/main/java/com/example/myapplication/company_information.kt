@@ -9,16 +9,21 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.myapplication.data.model.CompanyData
 import com.example.myapplication.data.model.DisabilityData
 import com.example.myapplication.databinding.FragmentCompanyInformationBinding
 import com.example.myapplication.viewmodels.UserViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 
 class company_information : Fragment() {
     lateinit var binding: FragmentCompanyInformationBinding
-//    private lateinit var firestore: FirebaseFirestore
-//    private val userViewModel: UserViewModel by activityViewModels()
+
+    private lateinit var firestore: FirebaseFirestore
+    lateinit var fireAuth: FirebaseAuth
+
+    //    private val userViewModel: UserViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,7 +33,8 @@ class company_information : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        firestore = FirebaseFirestore.getInstance()
+        firestore = FirebaseFirestore.getInstance()
+        fireAuth = FirebaseAuth.getInstance()
         // Inflate the layout for this fragment
         binding = FragmentCompanyInformationBinding.inflate(inflater, container, false)
         return binding.root
@@ -37,7 +43,26 @@ class company_information : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding.save.setOnClickListener {
+        binding.save.setOnClickListener {
+            val Companyname = binding.CompanyName.text.toString()
+            val Companyphone = binding.phone.text.toString()
+            val Companyemail = binding.Email.text.toString()
+            val Companyaddress = binding.Location.text.toString()
+            val companyWebsite = binding.URL.text.toString()
+            val companyDescription = binding.Disc.text.toString()
+            val companyInformation = CompanyData(
+                companyName = Companyname,
+                phone = Companyphone,
+                email = Companyemail,
+                location = Companyaddress,
+                websiteUrl = companyWebsite,
+                description = companyDescription
+            )
+            saveDisabilityData(companyInformation)
+
+
+        }
+        //        binding.save.setOnClickListener {
 //            val name = binding.Name.text.toString()
 //            val age = binding.age.text.toString().toIntOrNull() ?: 0 // Ensure age is an Int
 //            val phone = binding.phone.text.toString()
@@ -75,16 +100,20 @@ class company_information : Fragment() {
 //
 //
 //    }
-//    private fun saveDisabilityData(disabilityData: DisabilityData) {
-//        val docRef = firestore.collection("disabilityData").document(userViewModel.Uid.toString())
-//
-//        docRef.set(disabilityData)
-//            .addOnSuccessListener {
-//                Toast.makeText(context, "Data saved successfully", Toast.LENGTH_SHORT).show()
-//                findNavController().navigateUp()
-//            }
-//            .addOnFailureListener { exception ->
-//                Toast.makeText(context, "Failed to save data", Toast.LENGTH_SHORT).show()
-//            }
     }
+
+    fun saveDisabilityData(companyData: CompanyData) {
+        val docRef =
+            firestore.collection("comapnyData").document(fireAuth.currentUser?.uid.toString())
+
+        docRef.set(companyData)
+            .addOnSuccessListener {
+                Toast.makeText(context, "Data saved successfully", Toast.LENGTH_SHORT).show()
+                findNavController().navigateUp()
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(context, "Failed to save data", Toast.LENGTH_SHORT).show()
+            }
+    }
+
 }
