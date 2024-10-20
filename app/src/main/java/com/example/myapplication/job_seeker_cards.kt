@@ -63,6 +63,6 @@ class job_seeker_cards : Fragment() {
         val bundle = Bundle().apply {
             putString("userId", disabilityData.id) // Pass userId to Detail fragment
         }
-        //findNavController().navigate(R.id.action_companyHome_to_detail, bundle)
+        findNavController().navigate(R.id.action_nav_job_seekers_to_job_seeker_card_detail)
     }
 }

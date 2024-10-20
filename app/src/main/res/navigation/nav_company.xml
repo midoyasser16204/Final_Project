@@ -6,10 +6,18 @@
     <fragment
         android:id="@+id/nav_job_seekers"
         android:name="com.example.myapplication.job_seeker_cards"
-        android:label="Job Seekers" />
+        android:label="Job Seekers" >
+        <action
+            android:id="@+id/action_nav_job_seekers_to_job_seeker_card_detail"
+            app:destination="@id/job_seeker_card_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_company_info"
         android:name="com.example.myapplication.company_information"
         android:label="Company Info" />
+    <fragment
+        android:id="@+id/job_seeker_card_detail"
+        android:name="com.example.myapplication.job_seeker_card_detail"
+        android:label="job_seeker_card_detail" />
 </navigation>
