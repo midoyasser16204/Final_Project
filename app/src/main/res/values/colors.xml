@@ -14,7 +14,7 @@
     <color name="secondaryColor">#03DAC6</color>
 
     <!-- Text Color (White) -->
-
+    <color name="card_stroke">#FF0000</color>
 
     <!-- Gray for Stroke/Border -->
     <color name="gray">#BDBDBD</color>

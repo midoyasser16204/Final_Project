@@ -56,4 +56,9 @@
         android:id="@+id/company_information"
         android:name="com.example.myapplication.company_information"
         android:label="company_information" />
+    <activity
+        android:id="@+id/companyActivity"
+        android:name="com.example.myapplication.CompanyActivity"
+        android:label="activity_company"
+        tools:layout="@layout/activity_company" />
 </navigation>

@@ -74,7 +74,10 @@ class jop_seeker_information : Fragment() {
         setupDisabilitySpinner()
         setupButtons()
 
-        binding.save.setOnClickListener { saveUserData() }
+        binding.save.setOnClickListener { saveUserData()
+
+
+        }
         binding.profileImage.setOnClickListener { imagePickerLauncher.launch("image/*") } // اختيار صورة عند الضغط على ImageView
     }
 
