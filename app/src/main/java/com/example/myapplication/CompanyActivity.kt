@@ -46,6 +46,7 @@ class CompanyActivity : AppCompatActivity() {
             }
         }
 
+
         // Load the default fragment on activity start
         if (savedInstanceState == null) {
             navController.navigate(R.id.nav_company_info)
