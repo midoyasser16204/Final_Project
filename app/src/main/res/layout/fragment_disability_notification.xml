@@ -9,7 +9,7 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/jobSeekerListTitle"
+        android:id="@+id/notificationListTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Notification"
@@ -20,13 +20,13 @@
         android:layout_marginBottom="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/jobSeekerRecyclerView"
+        android:id="@+id/notificationsRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jobSeekerListTitle"
+        app:layout_constraintTop_toBottomOf="@+id/notificationListTitle"
         android:layout_marginTop="8dp"
-        tools:listitem="@layout/item_layout" />
+        tools:listitem="@layout/item_not" />
 </androidx.constraintlayout.widget.ConstraintLayout>

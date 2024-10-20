@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -49,5 +50,7 @@ class CompanyActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             navController.navigate(R.id.nav_company_info)
         }
+        val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        sharedPref.edit().putString("LAST_ACTIVITY", "CompanyActivity").apply()
     }
 }

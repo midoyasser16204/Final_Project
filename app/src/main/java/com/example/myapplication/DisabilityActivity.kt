@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -49,6 +50,10 @@ class DisabilityActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             navController.navigate(R.id.nav_profile) // Use the correct ID here
         }
+        // Save the current activity in SharedPreferences
+        val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        sharedPref.edit().putString("LAST_ACTIVITY", "DisabilityActivity").apply()
+
     }
 
 }
