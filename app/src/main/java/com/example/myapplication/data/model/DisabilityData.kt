@@ -12,5 +12,7 @@ data class DisabilityData(
     var skill: String = "",
     var disability: String = "",
     var address: String = "",
-    var isCompany: Boolean = false
+    var isCompany: Boolean = false,
+    var profileImageUrl: String? = null,
+    var pdfUrl: String? = null
 ):Serializable

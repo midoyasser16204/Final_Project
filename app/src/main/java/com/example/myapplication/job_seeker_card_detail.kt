@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.myapplication.data.model.DisabilityData
 import com.example.myapplication.databinding.FragmentJobSeekerCardDetailBinding
 import com.google.firebase.firestore.FirebaseFirestore
@@ -51,6 +54,20 @@ class job_seeker_card_detail : Fragment() {
                     binding.skill.text = disabilityData.skill
                     binding.Address.text = disabilityData.address
                     binding.disability.text = disabilityData.disability
+
+                    // Load profile image using Glide or any image loading library
+                    disabilityData.profileImageUrl?.let { imageUrl ->
+                        Glide.with(this)
+                            .load(imageUrl)
+                            .into(binding.profileImage)
+                    }
+
+                    // Handle PDF URL
+                    disabilityData.pdfUrl?.let { pdfUrl ->
+                        binding.pdfPreview.setOnClickListener {
+                            openPdf(pdfUrl) // Modify openPdf to accept a URL
+                        }
+                    }
                 } else {
                     Toast.makeText(context, "Failed to map data", Toast.LENGTH_SHORT).show()
                 }
@@ -61,6 +78,14 @@ class job_seeker_card_detail : Fragment() {
             Toast.makeText(context, "Failed to fetch data: ${exception.message}", Toast.LENGTH_SHORT).show()
             Log.e("DisabilityData", "Error fetching data", exception)
         }
+    }
+
+    private fun openPdf(pdfUrl: String) {
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(Uri.parse(pdfUrl), "application/pdf")
+            flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+        }
+        startActivity(intent)
     }
 
 

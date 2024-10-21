@@ -158,6 +158,10 @@ class jop_seeker_information : Fragment() {
 
         val dataMap = disabilityData.toMap().apply {
             pdfUrl?.let { put("pdfUrl", it) }
+            // Include the profile image URL if it exists
+            selectedImageUri?.let {
+                put("profileImageUrl", it.toString())
+            }
         }
 
         userDoc.set(dataMap)

@@ -5,17 +5,14 @@ plugins {
 }
 
 android {
-
     namespace = "com.example.myapplication"
-    compileSdk = 34
-
     buildFeatures {
         viewBinding = true
         dataBinding = true
-
     }
 
     defaultConfig {
+        compileSdk = 34
         applicationId = "com.example.myapplication"
         minSdk = 24
         targetSdk = 34
@@ -44,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.github.glide) // Use Glide implementation
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
