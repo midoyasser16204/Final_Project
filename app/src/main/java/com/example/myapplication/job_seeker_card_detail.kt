@@ -14,7 +14,7 @@ import com.example.myapplication.data.model.DisabilityData
 import com.example.myapplication.databinding.FragmentJobSeekerCardDetailBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
-class job_seeker_card_detail : Fragment() {
+class JobSeekerCardDetail : Fragment() {
 
     private lateinit var binding: FragmentJobSeekerCardDetailBinding
     private lateinit var firestore: FirebaseFirestore
@@ -55,17 +55,22 @@ class job_seeker_card_detail : Fragment() {
                     binding.Address.text = disabilityData.address
                     binding.disability.text = disabilityData.disability
 
-                    // Load profile image using Glide or any image loading library
+                    // Load profile image using Glide
                     disabilityData.profileImageUrl?.let { imageUrl ->
+                        Log.d("ImageLoad", "Loading image from URL: $imageUrl")
                         Glide.with(this)
                             .load(imageUrl)
+                            .error(R.drawable.ic_image_picker) // Default image on error
                             .into(binding.profileImage)
+                    } ?: run {
+                        Log.d("ImageLoad", "No image URL found. Setting default image.")
+                        binding.profileImage.setImageResource(R.drawable.ic_image_picker)
                     }
 
                     // Handle PDF URL
                     disabilityData.pdfUrl?.let { pdfUrl ->
                         binding.pdfPreview.setOnClickListener {
-                            openPdf(pdfUrl) // Modify openPdf to accept a URL
+                            openPdf(pdfUrl)
                         }
                     }
                 } else {
@@ -87,6 +92,4 @@ class job_seeker_card_detail : Fragment() {
         }
         startActivity(intent)
     }
-
-
 }
