@@ -18,6 +18,6 @@
         android:label="Company Info" />
     <fragment
         android:id="@+id/job_seeker_card_detail"
-        android:name="com.example.myapplication.job_seeker_card_detail"
+        android:name="com.example.myapplication.JobSeekerCardDetail"
         android:label="job_seeker_card_detail" />
 </navigation>

@@ -1,5 +1,8 @@
 package com.example.myapplication
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -34,6 +37,10 @@ class JobSeekerCardDetail : Fragment() {
         } else {
             Toast.makeText(context, "No user ID found", Toast.LENGTH_SHORT).show()
         }
+        binding.btnApply.setOnClickListener {
+            sendNotification()
+        }
+        createNotificationChannel()
 
         return binding.root
     }
@@ -91,5 +98,37 @@ class JobSeekerCardDetail : Fragment() {
             flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
         }
         startActivity(intent)
+    }
+
+    private fun sendNotification() {
+        // Create an instance of NotificationManager
+        val notificationManager = context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        // Build the notification using the NotificationModule
+        val notificationBuilder = NotificationModule.provideNotificationBuilder(requireContext())
+            .setContentTitle("Job Application")
+            .setContentText("You've been contacted") // Set the notification message here
+            .setAutoCancel(true) // Dismiss the notification once it is clicked
+            .setSmallIcon(R.drawable.baseline_notifications_24) // Set a small icon
+            .setChannelId("your_channel_id") // Set the channel ID
+
+        // Show the notification with a unique ID
+        notificationManager.notify(System.currentTimeMillis().toInt(), notificationBuilder.build())
+    }
+
+    private fun createNotificationChannel() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            val channelId = "your_channel_id"
+            val channelName = "Your Channel Name"
+            val channelDescription = "Your Channel Description"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+
+            val channel = NotificationChannel(channelId, channelName, importance).apply {
+                description = channelDescription
+            }
+
+            val notificationManager: NotificationManager = requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
     }
 }
