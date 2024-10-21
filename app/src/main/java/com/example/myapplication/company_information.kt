@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -37,6 +39,10 @@ class company_information : Fragment() {
         fireAuth = FirebaseAuth.getInstance()
         // Inflate the layout for this fragment
         binding = FragmentCompanyInformationBinding.inflate(inflater, container, false)
+        val logoutButton: Unit = view?.findViewById(R.id.logout) ?:
+        binding.logout.setOnClickListener {
+            logout()
+        }
         return binding.root
 
     }
@@ -85,16 +91,16 @@ class company_information : Fragment() {
 //
 //
 //        }
-//        val disabilityArray = resources.getStringArray(R.array.Company_Array)
-//
-//        // Create an ArrayAdapter
-//        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, disabilityArray)
-//
-//        // Specify the layout for the dropdown items
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//
-//        // Set the adapter to the Spinner
-//        binding.disabilitySpinner.adapter = adapter
+        val disabilityArray = resources.getStringArray(R.array.Company_Array)
+
+        // Create an ArrayAdapter
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, disabilityArray)
+
+        // Specify the layout for the dropdown items
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // Set the adapter to the Spinner
+        binding.IndustryTypespinner.adapter = adapter
 //
 //
 //
@@ -115,5 +121,18 @@ class company_information : Fragment() {
                 Toast.makeText(context, "Failed to save data", Toast.LENGTH_SHORT).show()
             }
     }
+    private fun logout() {
+        // Sign out from Firebase
+        fireAuth.signOut()
 
+        // Clear SharedPreferences if needed
+        val sharedPref = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        sharedPref.edit().clear().apply()
+
+        // Navigate to MainActivity
+        val intent = Intent(requireActivity(), MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        requireActivity().finish() // Finish the current activity
+    }
 }

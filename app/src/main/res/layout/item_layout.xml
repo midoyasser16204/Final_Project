@@ -13,37 +13,55 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="6dp">
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:backgroundTint="@color/card_background">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/card_background">
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent">
+
+            <!-- Profile Image -->
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_image_picker"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
             <TextView
                 android:id="@+id/Name"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:text="@{user.name}"
                 android:textColor="@color/text_color"
-                android:textSize="25sp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/profileImage"
                 app:layout_constraintTop_toTopOf="parent"
-                android:text="@{user.name}" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/Dis"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:textColor="@color/subheading_color"
-                android:textSize="20sp"
-                app:layout_constraintLeft_toLeftOf="@+id/Name"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Name"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@id/profileImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/Name"
                 android:text="@{user.disability}" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

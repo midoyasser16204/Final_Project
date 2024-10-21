@@ -170,6 +170,7 @@
             <!-- Disability Type Input -->
 
             <Spinner
+                android:layout_marginTop="10dp"
                 android:id="@+id/IndustryTypespinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -183,6 +184,15 @@
                 android:backgroundTint="@color/button_color"
                 android:layout_marginTop="10dp"
                 android:text="@string/Save"
+                android:textColor="@color/button_text_color" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/card_stroke"
+                android:layout_marginTop="10dp"
+                android:text="@string/logout"
                 android:textColor="@color/button_text_color" />
 
         </LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -10,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -65,6 +67,13 @@ class jop_seeker_information : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentJopSeekerInformationBinding.inflate(inflater, container, false)
+        auth = FirebaseAuth.getInstance()
+
+        // Set up the logout button
+        val logoutButton: Unit = view?.findViewById(R.id.logout) ?:
+        binding.logout.setOnClickListener {
+            logout()
+        }
         return binding.root
     }
 
@@ -89,7 +98,7 @@ class jop_seeker_information : Fragment() {
     }
 
     private fun setupButtons() {
-        binding.tvUploadFile.setOnClickListener { requestPermissionsForPdf() }
+        binding.uploadCvButton.setOnClickListener { requestPermissionsForPdf() }
         binding.pdfPreview.setOnClickListener { openPdf() }
     }
 
@@ -238,5 +247,20 @@ class jop_seeker_information : Fragment() {
 
     companion object {
         private const val PERMISSION_REQUEST_CODE = 100
+    }
+
+    private fun logout() {
+        // Sign out from Firebase
+        auth.signOut()
+
+        // Clear SharedPreferences if needed
+        val sharedPref = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        sharedPref.edit().clear().apply()
+
+        // Navigate to MainActivity
+        val intent = Intent(requireActivity(), MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        requireActivity().finish() // Finish the current activity
     }
 }

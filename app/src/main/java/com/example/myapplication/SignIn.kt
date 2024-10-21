@@ -121,7 +121,7 @@ class SignIn : Fragment() {
     }
 
     private fun selectRole(selectedCard: MaterialCardView, otherCard: MaterialCardView) {
-        selectedCard.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.button_color))
+        selectedCard.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.subheading_color))
         otherCard.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
 
 

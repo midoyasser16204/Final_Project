@@ -18,6 +18,8 @@
     <string name="Profile">الصفحة الشخصية</string>
     <string name="CompanyName">اسم الشركة</string>
     <string name="RegistrationNumber">رقم التسجيل</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="Cpdf">اضغط هنا لرؤية الPDF</string>
     <string name="Location">الموقع</string>
     <string name="URL">عنوان الموقع الالكتروني</string>
     <string name="Notification">الإشعارات</string>

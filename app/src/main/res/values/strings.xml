@@ -27,6 +27,8 @@
     <string name="Save">Save</string>
     <string name="Profile">Profile</string>
     <string name="Details">Details</string>
+    <string name="Cpdf">Click here to view the PDF</string>
+    <string name="logout">Log Out</string>
     <string name="field_apply">Apply</string>
     <string name="Upload_CV">Drag your CV</string>
     <string name="login_heading">Welcome Back</string>

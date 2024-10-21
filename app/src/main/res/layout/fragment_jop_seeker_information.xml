@@ -187,6 +187,7 @@
             <!-- Disability Type Input -->
 
             <Spinner
+                android:layout_marginTop="10dp"
                 android:id="@+id/disabilitySpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -197,65 +198,58 @@
                 android:layout_height="wrap_content"
                 android:padding="16dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/uploadCv"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/uploadCvButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    app:icon="@drawable/ic_file"
+                    app:iconTint="@color/icon_tint"
+                    app:iconGravity="textStart"
+                    app:backgroundTint="@color/background_color"
+                    app:strokeColor="@color/icon_tint"
+                    app:strokeWidth="1dp"
+                    android:text="@string/Upload_CV"
+                    android:textColor="@color/text_color"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <ImageView
-                            android:id="@+id/ivFile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:contentDescription="@null"
-                            android:src="@drawable/ic_file"
-                            app:tint="@color/icon_tint" />
-
-                        <TextView
-                            android:id="@+id/tvUploadFile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/Upload_CV"
-                            android:textColor="@color/text_color" />
-                        <ImageView
-                            android:id="@+id/pdfPreview"
-                            android:layout_width="100dp"
-                            android:layout_height="150dp"
-                            android:contentDescription="PDF Preview"
-                            android:src="@drawable/ic_pdf_placeholder"
-                            android:visibility="gone"
-                            app:layout_constraintTop_toBottomOf="@id/pickImageButton"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            android:layout_marginTop="16dp" />
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/pdfPreview"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:contentDescription="PDF Preview"
+                    android:src="@drawable/ic_pdf_placeholder"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/uploadCvButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="16dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:backgroundTint="@color/button_color"
                 android:text="@string/Save"
+                android:textColor="@color/button_text_color" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/card_stroke"
+                android:layout_marginTop="10dp"
+                android:text="@string/logout"
                 android:textColor="@color/button_text_color" />
 
         </LinearLayout>

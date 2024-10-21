@@ -45,21 +45,21 @@ class MainActivity : AppCompatActivity() {
         val lastActivity = sharedPreferences.getString("LAST_ACTIVITY", "MainActivity")
 
         // Navigate to the last activity
-//        when (lastActivity) {
-//            "CompanyActivity" -> {
-//                val intent = Intent(this, CompanyActivity::class.java)
-//                startActivity(intent)
-//                finish()  // Close MainActivity
-//            }
-//            "DisabilityActivity" -> {
-//                val intent = Intent(this, DisabilityActivity::class.java)
-//                startActivity(intent)
-//                finish()  // Close MainActivity
-//            }
-//            else -> {
-//                setContentView(binding.root)
-//            }
-//        }
+        when (lastActivity) {
+            "CompanyActivity" -> {
+                val intent = Intent(this, CompanyActivity::class.java)
+                startActivity(intent)
+                finish()  // Close MainActivity
+            }
+            "DisabilityActivity" -> {
+                val intent = Intent(this, DisabilityActivity::class.java)
+                startActivity(intent)
+                finish()  // Close MainActivity
+            }
+            else -> {
+                setContentView(binding.root)
+            }
+        }
     }
 
     override fun onNewIntent(intent: android.content.Intent) {
