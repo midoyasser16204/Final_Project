@@ -2,10 +2,7 @@ package com.example.myapplication
 
 import android.content.Context
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -34,8 +31,8 @@ class DisabilityActivity : AppCompatActivity() {
         // Set up item selection listener
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_profile -> { // Update this ID
-                    navController.navigate(R.id.nav_profile)
+                R.id.no -> { // Update this ID
+                    navController.navigate(R.id.jop_sekeer_profile)
                     true
                 }
                 R.id.nav_not -> {
@@ -48,7 +45,7 @@ class DisabilityActivity : AppCompatActivity() {
 
         // Load the default fragment on activity start
         if (savedInstanceState == null) {
-            navController.navigate(R.id.nav_profile) // Use the correct ID here
+            navController.navigate(R.id.no) // Use the correct ID here
         }
         // Save the current activity in SharedPreferences
         val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
