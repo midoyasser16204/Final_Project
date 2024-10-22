@@ -15,9 +15,25 @@
     <fragment
         android:id="@+id/nav_company_info"
         android:name="com.example.myapplication.company_information"
-        android:label="Company Info" />
+        android:label="Company Info" >
+        <action
+            android:id="@+id/action_nav_company_info_to_add_job2"
+            app:destination="@id/add_job" />
+    </fragment>
     <fragment
         android:id="@+id/job_seeker_card_detail"
         android:name="com.example.myapplication.JobSeekerCardDetail"
         android:label="job_seeker_card_detail" />
+    <fragment
+        android:id="@+id/add_job"
+        android:name="com.example.myapplication.add_job"
+        android:label="add_job" />
+    <fragment
+        android:id="@+id/nav_job"
+        android:name="com.example.myapplication.JobOfferFragment"
+        android:label="JobOfferFragment" >
+        <action
+            android:id="@+id/action_jobOfferFragment_to_add_job"
+            app:destination="@id/add_job" />
+    </fragment>
 </navigation>

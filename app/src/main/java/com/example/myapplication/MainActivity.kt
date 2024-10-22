@@ -40,8 +40,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Handle notifications when the app is open
-        handleIncomingNotification(intent.extras)
-
         val lastActivity = sharedPreferences.getString("LAST_ACTIVITY", "MainActivity")
 
         // Navigate to the last activity
@@ -59,29 +57,6 @@ class MainActivity : AppCompatActivity() {
             else -> {
                 setContentView(binding.root)
             }
-        }
-    }
-
-    override fun onNewIntent(intent: android.content.Intent) {
-        super.onNewIntent(intent)
-        handleIncomingNotification(intent.extras)
-    }
-
-    private fun handleIncomingNotification(data: Bundle?) {
-        data?.let {
-            val title = it.getString("title", "No Title")
-            val body = it.getString("body", "No Body")
-
-            Toast.makeText(this, "Notification: $title - $body", Toast.LENGTH_LONG).show()
-            // Pass the data to the active fragment (if needed)
-            sendDataToFragment(title, body)
-        }
-    }
-
-    private fun sendDataToFragment(title: String, body: String) {
-        val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)
-        if (fragment is DisabilityNotificationFragment) {
-            fragment.updateUIWithNotification(title, body)
         }
     }
 

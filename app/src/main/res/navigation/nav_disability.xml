@@ -8,10 +8,7 @@
         android:id="@+id/no"
         android:name="com.example.myapplication.jop_seeker_information"
         android:label="jop_seeker_information" />
-    <fragment
-        android:id="@+id/nav_not"
-        android:name="com.example.myapplication.DisabilityNotificationFragment"
-        android:label="disability_notification" />
+
     <fragment
         android:id="@+id/jop_sekeer_profile"
         android:name="com.example.myapplication.jop_sekeer_profile"

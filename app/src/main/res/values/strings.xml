@@ -29,6 +29,10 @@
     <string name="Profile">Profile</string>
     <string name="Details">Details</string>
     <string name="Cpdf">Click here to view the PDF</string>
+    <string name="AddJob">Add Job</string>
+    <string name="JobTitle">Job Title</string>
+    <string name="JobDesc">Job Description</string>
+    <string name="Salary">Salary</string>
     <string name="logout">Log Out</string>
     <string name="field_apply">Apply</string>
     <string name="Upload_CV">Drag your CV</string>
@@ -56,6 +60,8 @@
         <item>Transportation</item>
         <item>Entertainment</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- TODO: Remove or change this placeholder text -->
 
 

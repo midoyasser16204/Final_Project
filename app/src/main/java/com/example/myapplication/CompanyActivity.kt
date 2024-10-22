@@ -42,6 +42,10 @@ class CompanyActivity : AppCompatActivity() {
                     navController.navigate(R.id.nav_company_info)
                     true
                 }
+                R.id.nav_job -> {
+                    navController.navigate(R.id.nav_job)
+                    true
+                }
                 else -> false
             }
         }

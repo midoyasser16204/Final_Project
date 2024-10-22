@@ -15,7 +15,11 @@
     <string name="Choose_Role">اختر الدور</string>
     <string name="Job_Seeker">الباحثون عن عمل</string>
     <string name="Company">الشركة</string>
+    <string name="JobTitle">مسمى وظيفي</string>
+    <string name="JobDesc">الوصف الوظيفي</string>
     <string name="Save">حفظ</string>
+    <string name="Salary">راتب</string>
+    <string name="AddJob">إضافة وظيفة</string>
     <string name="Profile">الصفحة الشخصية</string>
     <string name="CompanyName">اسم الشركة</string>
     <string name="RegistrationNumber">رقم التسجيل</string>
