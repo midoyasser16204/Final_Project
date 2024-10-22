@@ -16,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class company_profile : Fragment() {
 
+    //data
     private var _binding: FragmentCompanyProfileBinding? = null
     private val binding get() = _binding!!
 
