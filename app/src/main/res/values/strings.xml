@@ -33,6 +33,7 @@
     <string name="JobTitle">Job Title</string>
     <string name="JobDesc">Job Description</string>
     <string name="Salary">Salary</string>
+    <string name="FindJob">Find Job</string>
     <string name="logout">Log Out</string>
     <string name="field_apply">Apply</string>
     <string name="Upload_CV">Drag your CV</string>

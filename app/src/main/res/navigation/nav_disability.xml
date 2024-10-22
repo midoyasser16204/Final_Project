@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_disability"
-    app:startDestination="@id/no">
-
-    <fragment
-        android:id="@+id/no"
-        android:name="com.example.myapplication.jop_seeker_information"
-        android:label="jop_seeker_information" >
-        <action
-            android:id="@+id/action_no_to_jop_sekeer_profile"
-            app:destination="@id/jop_sekeer_profile" />
-    </fragment>
+    app:startDestination="@id/find_job">
 
     <fragment
         android:id="@+id/jop_sekeer_profile"
         android:name="com.example.myapplication.jop_sekeer_profile"
         android:label="jop_sekeer_profile" />
+    <fragment
+        android:id="@+id/find_job"
+        android:name="com.example.myapplication.find_job"
+        android:label="fragment_find_job"
+        tools:layout="@layout/fragment_find_job" />
 </navigation>

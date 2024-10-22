@@ -3,4 +3,9 @@
         android:id="@+id/jop_sekeer_profile"
         android:icon="@drawable/ic_person"
         android:title="@string/Profile" />
+    <item
+        android:id="@+id/find_job"
+        android:icon="@drawable/ic_jobs"
+        android:title="@string/FindJob"
+        />
 </menu>

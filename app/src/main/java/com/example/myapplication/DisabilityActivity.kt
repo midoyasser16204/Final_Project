@@ -31,8 +31,12 @@ class DisabilityActivity : AppCompatActivity() {
         // Set up item selection listener
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.no -> { // Update this ID
+                R.id.jop_sekeer_profile -> {
                     navController.navigate(R.id.jop_sekeer_profile)
+                    true
+                }
+                R.id.find_job -> {
+                    navController.navigate(R.id.find_job)
                     true
                 }
                 else -> false
@@ -41,12 +45,11 @@ class DisabilityActivity : AppCompatActivity() {
 
         // Load the default fragment on activity start
         if (savedInstanceState == null) {
-            navController.navigate(R.id.no) // Use the correct ID here
+            navController.navigate(R.id.jop_sekeer_profile) // Set the default fragment to `find_job`
         }
+
         // Save the current activity in SharedPreferences
         val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
         sharedPref.edit().putString("LAST_ACTIVITY", "DisabilityActivity").apply()
-
     }
-
 }
