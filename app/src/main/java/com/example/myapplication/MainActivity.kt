@@ -5,11 +5,10 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
-import java.util.Locale
 import com.google.firebase.messaging.FirebaseMessaging
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy(LazyThreadSafetyMode.NONE) {
@@ -27,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         val savedLanguage = sharedPreferences.getString("LANGUAGE", "en") ?: "en"
         setLocalization(savedLanguage)
 
+        // Set the content view once
         setContentView(binding.root)
 
         // Initialize Firebase and get the device token
@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
             if (task.isSuccessful) {
                 val token = task.result
                 Log.d("FCM Token", "Device Token: $token")
+                // Save the token if necessary
+                saveTokenToPreferences(token)
             } else {
                 Log.e("FCM Token", "Fetching FCM token failed", task.exception)
             }
@@ -45,27 +47,27 @@ class MainActivity : AppCompatActivity() {
         // Navigate to the last activity
         when (lastActivity) {
             "CompanyActivity" -> {
-                val intent = Intent(this, CompanyActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(this, CompanyActivity::class.java))
                 finish()  // Close MainActivity
             }
             "DisabilityActivity" -> {
-                val intent = Intent(this, DisabilityActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(this, DisabilityActivity::class.java))
                 finish()  // Close MainActivity
-            }
-            else -> {
-                setContentView(binding.root)
             }
         }
     }
 
-    fun setLocalization(languageCode: String) {
-        val config = resources?.configuration
+    private fun saveTokenToPreferences(token: String) {
+        // Optionally save the token in SharedPreferences
+        sharedPreferences.edit().putString("FCM_TOKEN", token).apply()
+    }
+
+    private fun setLocalization(languageCode: String) {
+        val config = resources.configuration
         val locale = Locale(languageCode)
         Locale.setDefault(locale)
-        config?.setLocale(locale)
-        resources?.updateConfiguration(config, resources.displayMetrics)
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
 
         // Save the selected language to SharedPreferences
         sharedPreferences.edit().putString("LANGUAGE", languageCode).apply()
