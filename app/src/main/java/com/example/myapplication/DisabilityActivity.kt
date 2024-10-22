@@ -35,10 +35,6 @@ class DisabilityActivity : AppCompatActivity() {
                     navController.navigate(R.id.jop_sekeer_profile)
                     true
                 }
-                R.id.nav_not -> {
-                    navController.navigate(R.id.nav_not)
-                    true
-                }
                 else -> false
             }
         }

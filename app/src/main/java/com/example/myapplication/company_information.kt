@@ -64,6 +64,9 @@ class company_information : Fragment() {
                 description = companyDescription
             )
             saveDisabilityData(companyInformation)
+
+            val intent = Intent(requireActivity(), CompanyActivity::class.java)
+            startActivity(intent)
         }
 
         // Setting up spinner

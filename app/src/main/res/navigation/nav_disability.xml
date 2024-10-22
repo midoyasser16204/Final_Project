@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/no"
         android:name="com.example.myapplication.jop_seeker_information"
-        android:label="jop_seeker_information" />
+        android:label="jop_seeker_information" >
+        <action
+            android:id="@+id/action_no_to_jop_sekeer_profile"
+            app:destination="@id/jop_sekeer_profile" />
+    </fragment>
 
     <fragment
         android:id="@+id/jop_sekeer_profile"

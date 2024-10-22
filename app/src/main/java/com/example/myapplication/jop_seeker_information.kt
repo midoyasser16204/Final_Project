@@ -84,6 +84,8 @@ class jop_seeker_information : Fragment() {
         setupButtons()
 
         binding.save.setOnClickListener { saveUserData()
+            val intent = Intent(requireActivity(), DisabilityActivity::class.java)
+            startActivity(intent)
 
 
         }

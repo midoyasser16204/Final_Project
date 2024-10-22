@@ -37,4 +37,12 @@
             android:id="@+id/action_jobOfferFragment_to_add_job"
             app:destination="@id/add_job" />
     </fragment>
+    <fragment
+        android:id="@+id/company_information2"
+        android:name="com.example.myapplication.company_information"
+        android:label="company_information" >
+        <action
+            android:id="@+id/action_company_information2_to_nav_company_info"
+            app:destination="@id/nav_company_info" />
+    </fragment>
 </navigation>
