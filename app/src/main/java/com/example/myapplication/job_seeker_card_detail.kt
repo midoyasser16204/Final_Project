@@ -60,12 +60,12 @@ class JobSeekerCardDetail : Fragment() {
                         Log.d("DisabilityData", "Data fetched: $disabilityData")
 
                         // Bind the data to the UI elements
-                        binding.Name.text = disabilityData.name
+                        binding.name.text = disabilityData.name
                         binding.age.text = disabilityData.age.toString()
                         binding.phone.text = disabilityData.phone
-                        binding.Email.text = disabilityData.email
+                        binding.email.text = disabilityData.email
                         binding.skill.text = disabilityData.skill
-                        binding.Address.text = disabilityData.address
+                        binding.address.text = disabilityData.address
                         binding.disability.text = disabilityData.disability
 
                         // Load profile image using Glide

@@ -26,7 +26,7 @@ class SignIn : Fragment() {
     private lateinit var cardJobSeeker: MaterialCardView
     private lateinit var cardCompany: MaterialCardView
     lateinit var auth: FirebaseAuth
-     var selectRole:String="joopSeeker"
+    var selectRole: String = "joopSeeker"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,12 +57,12 @@ class SignIn : Fragment() {
         cardCompany = binding.cardCompany
 
         binding.cardJobSeeker.setOnClickListener {
-            selectRole="joopSeeker"
+            selectRole = "joopSeeker"
             selectRole(cardJobSeeker, cardCompany)
         }
 
         binding.cardCompany.setOnClickListener {
-            selectRole="company"
+            selectRole = "company"
             selectRole(cardCompany, cardJobSeeker)
         }
         binding.btnSignUp.setOnClickListener {
@@ -70,14 +70,15 @@ class SignIn : Fragment() {
 
             navController.navigate(R.id.action_signIn_to_signUp)
         }
-        binding.SignInButton.setOnClickListener{
+        binding.SignInButton.setOnClickListener {
             val email = binding.Email.text.toString().trim()
             val password = binding.Password.text.toString().trim()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 signInUser(email, password)
             } else {
-                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT)
+                    .show()
             }
 
         }
@@ -96,18 +97,16 @@ class SignIn : Fragment() {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
 
-                Toast.makeText(requireContext(), "Sign-Up Successful", Toast.LENGTH_SHORT).show()
-                    if (selectRole=="joopSeeker") {
-                        val intent = Intent(requireContext(), DisabilityActivity::class.java)
-                        startActivity(intent)
-                        requireActivity().finish()
-                    }
-                else{
-                        val intent = Intent(requireContext(), CompanyActivity::class.java)
-                        startActivity(intent)
-                        requireActivity().finish()
-                    }
-
+                    Toast.makeText(requireContext(), "Sign-Up Successful", Toast.LENGTH_SHORT).show()
+                if (selectRole == "joopSeeker") {
+                    val intent = Intent(requireContext(), DisabilityActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                } else {
+                    val intent = Intent(requireContext(), CompanyActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
 
 
             } else {
@@ -121,7 +120,12 @@ class SignIn : Fragment() {
     }
 
     private fun selectRole(selectedCard: MaterialCardView, otherCard: MaterialCardView) {
-        selectedCard.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.subheading_color))
+        selectedCard.setCardBackgroundColor(
+            ContextCompat.getColor(
+                requireContext(),
+                R.color.subheading_color
+            )
+        )
         otherCard.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
 
 
