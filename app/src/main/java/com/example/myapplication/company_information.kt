@@ -36,9 +36,9 @@ class company_information : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentCompanyInformationBinding.inflate(inflater, container, false)
 
-        binding.logout.setOnClickListener {
-            logout()
-        }
+//        binding.logout.setOnClickListener {
+//            logout()
+//        }
 
         return binding.root
     }
@@ -86,17 +86,17 @@ class company_information : Fragment() {
             }
     }
 
-    private fun logout() {
-        fireAuth.signOut()
-
-        // Clear SharedPreferences if needed
-        val sharedPref = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-        sharedPref.edit().clear().apply()
-
-        // Navigate to MainActivity
-        val intent = Intent(requireActivity(), MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-        requireActivity().finish()
-    }
+//    private fun logout() {
+//        fireAuth.signOut()
+//
+//        // Clear SharedPreferences if needed
+//        val sharedPref = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+//        sharedPref.edit().clear().apply()
+//
+//        // Navigate to MainActivity
+//        val intent = Intent(requireActivity(), MainActivity::class.java)
+//        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//        startActivity(intent)
+//        requireActivity().finish()
+//    }
 }

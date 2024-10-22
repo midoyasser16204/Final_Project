@@ -70,10 +70,10 @@ class jop_seeker_information : Fragment() {
         auth = FirebaseAuth.getInstance()
 
         // Set up the logout button
-        val logoutButton: Unit = view?.findViewById(R.id.logout) ?:
-        binding.logout.setOnClickListener {
-            logout()
-        }
+       // val logoutButton: Unit = view?.findViewById(R.id.logout) ?:
+//        binding.logout.setOnClickListener {
+//            logout()
+//        }
         return binding.root
     }
 
@@ -248,19 +248,19 @@ class jop_seeker_information : Fragment() {
     companion object {
         private const val PERMISSION_REQUEST_CODE = 100
     }
-
-    private fun logout() {
-        // Sign out from Firebase
-        auth.signOut()
-
-        // Clear SharedPreferences if needed
-        val sharedPref = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-        sharedPref.edit().clear().apply()
-
-        // Navigate to MainActivity
-        val intent = Intent(requireActivity(), MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-        requireActivity().finish() // Finish the current activity
-    }
+// we dont need that
+//    private fun logout() {
+//        // Sign out from Firebase
+//        auth.signOut()
+//
+//        // Clear SharedPreferences if needed
+//        val sharedPref = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+//        sharedPref.edit().clear().apply()
+//
+//        // Navigate to MainActivity
+//        val intent = Intent(requireActivity(), MainActivity::class.java)
+//        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//        startActivity(intent)
+//        requireActivity().finish() // Finish the current activity
+//    }
 }

@@ -9,5 +9,6 @@ data class CompanyData(
     var location: String = "",
     var websiteUrl: String = "",
     var description: String = "",
+    var industryType: String = "",
     var isComapny:Boolean=true
 ) : Serializable

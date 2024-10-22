@@ -28,16 +28,16 @@ lateinit var binding: FragmentSelectRoleBinding
     override  fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.cardCompany.setOnClickListener {
-//           findNavController().navigate(R.id.action_select_role_to_company_information)
-            val intent = Intent(requireContext(), CompanyActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
+          findNavController().navigate(R.id.action_select_role_to_company_information)
+//            val intent = Intent(requireContext(), CompanyActivity::class.java)
+//            startActivity(intent)
+//            requireActivity().finish()
         }
         binding.cardJobSeeker.setOnClickListener {
-//            findNavController().navigate(R.id.from_role_to_jopSekerInformation)
-            val intent = Intent(requireContext(), DisabilityActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
+           findNavController().navigate(R.id.from_role_to_jopSekerInformation)
+//            val intent = Intent(requireContext(), DisabilityActivity::class.java)
+//            startActivity(intent)
+//            requireActivity().finish()
         }
     }
 

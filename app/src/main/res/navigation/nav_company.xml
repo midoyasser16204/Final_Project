@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/nav_job_seekers">
 
     <fragment
@@ -14,8 +15,8 @@
 
     <fragment
         android:id="@+id/nav_company_info"
-        android:name="com.example.myapplication.company_information"
-        android:label="Company Info" >
+        android:name="com.example.myapplication.company_profile"
+        android:label="Company Info">
         <action
             android:id="@+id/action_nav_company_info_to_add_job2"
             app:destination="@id/add_job" />

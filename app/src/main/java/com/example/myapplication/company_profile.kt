@@ -9,18 +9,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.example.myapplication.data.model.CompanyData
 import com.example.myapplication.data.model.DisabilityData
-import com.example.myapplication.databinding.FragmentJopSekeerProfileBinding
+import com.example.myapplication.databinding.FragmentCompanyProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 
-class jop_sekeer_profile : Fragment() {
-    private lateinit var binding: FragmentJopSekeerProfileBinding
+class company_profile : Fragment() {
+    // TODO: Rename and change types of parameters
+   lateinit var binding: FragmentCompanyProfileBinding
     private val firestore = FirebaseFirestore.getInstance()
     private val firebaseAuth = FirebaseAuth.getInstance()
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -30,61 +30,42 @@ class jop_sekeer_profile : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentJopSekeerProfileBinding.inflate(inflater, container, false)
-
-        // Show loading indicator
+         binding= FragmentCompanyProfileBinding.inflate(inflater, container, false)
+        val disabilityArray = resources.getStringArray(R.array.Company_Array)
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, disabilityArray)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.IndustryTypespinner.adapter = adapter
         showLoading()
-        setupDisabilitySpinner()
-        // Fetch data from Firebase and set to UI fields
         fetchDataFromFirebase()
         binding.logout.setOnClickListener {
             logout()
         }
-
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.save.setOnClickListener {
-            updateDataInFirebase()
-        }
-    }
-
-    private fun setupDisabilitySpinner() {
-        val disabilityArray = resources.getStringArray(R.array.Disability_Array)
-        val adapter =
-            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, disabilityArray)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.disabilitySpinner.adapter = adapter
     }
 
     private fun fetchDataFromFirebase() {
         // Example: assuming collection is "users" and document is the userId
         val userId =
-            "9XqOaOzOWPSHQgkjsvDY8Od9AFS2"// replace with dynamic user ID if needed
+            "Do67aq5AtacWjIOQiGrBiBsx3X62"// replace with dynamic user ID if needed
 
-        firestore.collection("disabilityData").document(userId)
+        firestore.collection("companyData").document(userId)
             .get()
             .addOnSuccessListener { documentSnapshot ->
                 if (documentSnapshot != null && documentSnapshot.exists()) {
-                    val data = documentSnapshot.toObject(DisabilityData::class.java)
+                    val data = documentSnapshot.toObject(CompanyData::class.java)
 
 
                     // Set data into UI fields
-                    binding.Name.setText(data?.name)
+                    binding.CompanyName.setText(data?.companyName)
                     binding.Email.setText(data?.email)
                     binding.phone.setText(data?.phone)
-                    binding.age.setText(data?.age.toString())
-                    binding.address.setText(data?.address)
-                    binding.skill.setText(data?.skill)
+                    binding.Location.setText(data?.location)
+                    binding.URL.setText(data?.websiteUrl)
+                    binding.Disc.setText(data?.description)
                     val spinnerPosition =
-                        (binding.disabilitySpinner.adapter as ArrayAdapter<String>)
-                            .getPosition(data?.disability)
-                    binding.disabilitySpinner.setSelection(spinnerPosition)
-
-
+                        (binding.IndustryTypespinner.adapter as ArrayAdapter<String>)
+                            .getPosition(data?.industryType)
+                    binding.IndustryTypespinner.setSelection(spinnerPosition)
                     // Hide loading indicator
                     showContent()
                 } else {
@@ -109,21 +90,21 @@ class jop_sekeer_profile : Fragment() {
         showLoading()
 
         // Gather the updated data from the UI
-        val updatedData = DisabilityData(
-            name = binding.Name.text.toString(),
+        val updatedData = CompanyData(
+            companyName = binding.CompanyName.text.toString(),
             email = binding.Email.text.toString(),
             phone = binding.phone.text.toString(),
-            age = binding.age.text.toString().toIntOrNull() ?: 0,  // Handle invalid input
-            address = binding.address.text.toString(),
-            skill = binding.skill.text.toString(),
-            disability = binding.disabilitySpinner.selectedItem.toString()
+            location = binding.Location.text.toString() ,  // Handle invalid input
+            description = binding.Disc.text.toString(),
+            websiteUrl = binding.URL.text.toString(),
+            industryType = binding.IndustryTypespinner.selectedItem.toString()
         )
 
         // Example: assuming collection is "disabilityData" and document is the userId
-        val userId = "9XqOaOzOWPSHQgkjsvDY8Od9AFS2" // Replace with dynamic user ID if needed
+        val userId = "Do67aq5AtacWjIOQiGrBiBsx3X62" // Replace with dynamic user ID if needed
 
         // Update the data in Firestore
-        firestore.collection("disabilityData").document(userId)
+        firestore.collection("companyData").document(userId)
             .set(updatedData) // You can use update() if you want to only update specific fields
             .addOnSuccessListener {
                 // Hide the loading indicator
@@ -170,6 +151,4 @@ class jop_sekeer_profile : Fragment() {
         startActivity(intent)
         requireActivity().finish() // Finish the current activity
     }
-
-
 }
