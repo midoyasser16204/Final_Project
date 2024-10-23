@@ -39,11 +39,7 @@ class JobSeekerCardDetail : Fragment() {
             Toast.makeText(context, "No user ID found", Toast.LENGTH_SHORT).show()
         }
 
-        // Set click listener for "Apply" button to trigger notifications
-        binding.btnApply.setOnClickListener {
-            val userId = arguments?.getString("userId") ?: return@setOnClickListener
-            fetchUserTokenAndSendNotification(userId) // Handles Firebase Token (optional)
-        }
+
 
         createNotificationChannel() // Create notification channel for Android 8.0+
 

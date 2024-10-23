@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">My Application</string>
+    <string name="app_name" translatable="false">Workability</string>
 
 
     <string name="Sign_In">Sign In</string>

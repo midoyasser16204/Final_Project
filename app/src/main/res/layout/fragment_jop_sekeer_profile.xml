@@ -8,7 +8,9 @@
             name="user"
             type="com.example.myapplication.data.model.DisabilityData" /> <!-- Adjust the package name accordingly -->
     </data>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -219,30 +221,7 @@
                 android:layout_marginTop="10dp" />
 
             <!-- CV Upload Button & Preview -->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/uploadCvButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:padding="16dp"
-                    app:icon="@drawable/ic_file"
-                    app:iconTint="@color/icon_tint"
-                    app:iconGravity="textStart"
-                    app:backgroundTint="@color/background_color"
-                    app:strokeColor="@color/icon_tint"
-                    app:strokeWidth="1dp"
-                    android:text="@string/Upload_CV"
-                    android:textColor="@color/text_color"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/pdfPreview"
@@ -251,11 +230,10 @@
                     android:contentDescription="PDF Preview"
                     android:src="@drawable/ic_pdf_placeholder"
                     android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@id/uploadCvButton"
+                    app:layout_constraintBottom_toTopOf="@id/save"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginTop="16dp" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- Save Button -->
             <com.google.android.material.button.MaterialButton
@@ -268,4 +246,5 @@
                 android:textColor="@color/button_text_color" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

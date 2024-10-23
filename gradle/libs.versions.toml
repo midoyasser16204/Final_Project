@@ -1,5 +1,5 @@
 [versions]
-agp = "8.6.1"
+agp = "8.7.1"
 firebaseFirestoreKtxVersion = "24.3.1"
 githubGlide = "4.12.0"
 kotlin = "1.9.0"

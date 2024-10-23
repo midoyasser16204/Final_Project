@@ -8,7 +8,9 @@
             name="user"
             type="com.example.myapplication.data.model.CompanyData" /> <!-- Adjust the package name accordingly -->
     </data>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -222,4 +224,5 @@
                 android:textColor="@color/button_text_color" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
