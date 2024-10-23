@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.data.model.JobData
 import com.example.myapplication.databinding.FragmentJobOfferBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class JobOfferFragment : Fragment() {
@@ -44,21 +45,30 @@ class JobOfferFragment : Fragment() {
     }
 
     private fun loadJobData() {
-        firestore.collection("jobData").get()
-            .addOnSuccessListener { documents ->
-                if (documents.isEmpty) {
-                    Toast.makeText(requireContext(), "No jobs available", Toast.LENGTH_SHORT).show()
-                } else {
-                    val jobs = documents.map {
-                        it.toObject(JobData::class.java).apply { id = it.id }
+        val currentCompanyId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+
+        if (currentCompanyId.isNotEmpty()) {
+            firestore.collection("jobData")
+                .whereEqualTo("companyId", currentCompanyId) // Filter jobs by companyId
+                .get()
+                .addOnSuccessListener { documents ->
+                    if (documents.isEmpty) {
+                        Toast.makeText(requireContext(), "No jobs available", Toast.LENGTH_SHORT).show()
+                    } else {
+                        val jobs = documents.map {
+                            it.toObject(JobData::class.java).apply { id = it.id }
+                        }
+                        jobAdapter.updateData(jobs)
                     }
-                    jobAdapter.updateData(jobs)
                 }
-            }
-            .addOnFailureListener {
-                Toast.makeText(requireContext(), "Failed to load jobs", Toast.LENGTH_SHORT).show()
-            }
+                .addOnFailureListener {
+                    Toast.makeText(requireContext(), "Failed to load jobs", Toast.LENGTH_SHORT).show()
+                }
+        } else {
+            Toast.makeText(requireContext(), "Unable to load jobs, company ID not found", Toast.LENGTH_SHORT).show()
+        }
     }
+
 
     private fun showDetail(jobData: JobData) {
         val bundle = Bundle().apply { putString("jobId", jobData.id) }

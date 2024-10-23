@@ -19,7 +19,7 @@
             android:id="@+id/jobSeekerListTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Job_Seeker"
+            android:text="@string/Jobs"
             android:textColor="@color/text_color"
             android:textSize="22sp"
             android:layout_marginBottom="16dp" />

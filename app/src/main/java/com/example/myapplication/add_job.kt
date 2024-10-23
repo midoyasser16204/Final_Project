@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.myapplication.data.model.JobData
 import com.example.myapplication.data.model.Model
 import com.example.myapplication.databinding.FragmentAddJobBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class add_job : Fragment() {
@@ -34,28 +35,29 @@ class add_job : Fragment() {
     }
 
     private fun addJobToFirestore() {
-        // Get the entered job title and description
         val jobTitle = binding.Jobtitle.text.toString().trim()
         val jobDescription = binding.Jobdesc.text.toString().trim()
         val salary = binding.Salary.text.toString().trim()
         val location = binding.Location.text.toString().trim()
 
-        // Check if the fields are not empty
-        if (jobTitle.isNotEmpty() && jobDescription.isNotEmpty() && salary.isNotEmpty() && location.isNotEmpty()) {
-            // Create the JobData object with the provided information
+        // Get the company ID from FirebaseAuth
+        val companyId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+
+        if (jobTitle.isNotEmpty() && jobDescription.isNotEmpty() && salary.isNotEmpty() && location.isNotEmpty() && companyId.isNotEmpty()) {
+            // Create the JobData object with the companyId
             val jobData = JobData(
-                id = "", // Firestore will generate the ID
+                id = "",
                 jobtitle = jobTitle,
                 jobdesc = jobDescription,
                 salary = salary,
-                location = location
+                location = location,
+                companyId = companyId // Associate the job with the company
             )
 
-            // Add the job data to Firestore
             firestore.collection("jobData").add(jobData)
                 .addOnSuccessListener {
                     Toast.makeText(requireContext(), "Job added successfully", Toast.LENGTH_SHORT).show()
-                    findNavController().navigateUp() // Navigate back after successfully adding the job
+                    findNavController().navigateUp()
                 }
                 .addOnFailureListener {
                     Toast.makeText(requireContext(), "Failed to add job", Toast.LENGTH_SHORT).show()
@@ -64,5 +66,6 @@ class add_job : Fragment() {
             Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT).show()
         }
     }
+
 }
 

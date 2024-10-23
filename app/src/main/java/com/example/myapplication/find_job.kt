@@ -27,7 +27,7 @@ class FindJobFragment : Fragment() {
         // Initialize adapter with empty data and no click actions
         jobAdapter = JobAdapter(emptyList())
 
-        binding.findJobRecyclerView.apply {
+        binding.jobSeekerRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = jobAdapter
         }

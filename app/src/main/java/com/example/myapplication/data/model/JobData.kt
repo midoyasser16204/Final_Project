@@ -9,4 +9,5 @@ data class JobData(
     var jobdesc: String = "",
     var salary: String = "",
     var location: String = "",
+    var companyId: String = ""
 ) : Serializable
