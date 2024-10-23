@@ -40,166 +40,236 @@
                 android:src="@drawable/ic_image_picker"
                 android:layout_gravity="center_horizontal" />
 
-            <!-- Name Row -->
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
 
-                <TextView
-                    android:id="@+id/nameTitle"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Name:"
-                    android:textColor="@color/text_color" />
+                    android:orientation="vertical"
+                    android:padding="15dp">
 
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{user.name}"
-                    android:textColor="@color/text_color"
-                    android:layout_marginStart="16dp" />
-            </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:text="User Information"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentStart="true"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
 
-            <!-- Age Row -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp">
+                        <TextView
+                            android:id="@+id/nameTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Name:"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentStart="true"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{user.name}"
+                            android:textColor="#6E6C6C"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentEnd="true"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/ageTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Age:"
-                    android:textColor="@color/text_color" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp">
+                        <TextView
+                            android:id="@+id/ageTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Age:"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentStart="true"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/age"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{String.valueOf(user.age)}"
+                            android:textColor="#6E6C6C"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentEnd="true"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(user.age)}"
-                    android:textColor="@color/text_color"
-                    android:layout_marginStart="16dp" />
-            </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp">
+                        <TextView
+                            android:id="@+id/phoneTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Phone:"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentStart="true"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{user.phone}"
+                            android:textColor="#6E6C6C"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentEnd="true"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
 
-            <!-- Phone Row -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp">
+                        <TextView
+                            android:id="@+id/emailTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Email:"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentStart="true"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{user.email}"
+                            android:textColor="#6E6C6C"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentEnd="true"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/phoneTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Phone:"
-                    android:textColor="@color/text_color" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp">
+                        <TextView
+                            android:id="@+id/addressTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Address:"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentStart="true"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{user.address}"
+                            android:textColor="#6E6C6C"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentEnd="true"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{user.phone}"
-                    android:textColor="@color/text_color"
-                    android:layout_marginStart="16dp" />
-            </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp">
+                        <TextView
+                            android:id="@+id/skillTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Skills:"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentStart="true"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/skill"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{user.skill}"
+                            android:textColor="#6E6C6C"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentEnd="true"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
 
-            <!-- Email Row -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp">
+                        <TextView
+                            android:id="@+id/disabilityTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Disability:"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentStart="true"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/disability"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{user.disability}"
+                            android:textColor="#6E6C6C"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="15sp"
+                            android:layout_alignParentEnd="true"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/emailTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Email:"
-                    android:textColor="@color/text_color" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{user.email}"
-                    android:textColor="@color/text_color"
-                    android:layout_marginStart="16dp" />
-            </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-            <!-- Address Row -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
 
-                <TextView
-                    android:id="@+id/addressTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Address:"
-                    android:textColor="@color/text_color" />
 
-                <TextView
-                    android:id="@+id/address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{user.address}"
-                    android:textColor="@color/text_color"
-                    android:layout_marginStart="16dp" />
-            </LinearLayout>
-
-            <!-- Skills Row -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:id="@+id/skillTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Skills:"
-                    android:textColor="@color/text_color" />
-
-                <TextView
-                    android:id="@+id/skill"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{user.skill}"
-                    android:textColor="@color/text_color"
-                    android:layout_marginStart="16dp" />
-            </LinearLayout>
-
-            <!-- Disability Row -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
-
-                <TextView
-                    android:id="@+id/disabilityTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Disability:"
-                    android:textColor="@color/text_color" />
-
-                <TextView
-                    android:id="@+id/disability"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{user.disability}"
-                    android:textColor="@color/text_color"
-                    android:layout_marginStart="16dp" />
-            </LinearLayout>
 
             <!-- PDF Preview Button -->
             <com.google.android.material.button.MaterialButton

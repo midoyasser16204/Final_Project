@@ -8,267 +8,264 @@
             name="user"
             type="com.example.myapplication.data.model.DisabilityData" /> <!-- Adjust the package name accordingly -->
     </data>
-    <ScrollView
 
-
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/background_color"
+        tools:context=".user_details.fragments.StudentDetailFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+
+            android:theme="@style/Widget.AppCompat.ProgressBar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <!-- Profile Header -->
+        <TextView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Profile"
+            android:textColor="@color/text_color"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp" />
+
+        <!-- Logout Button in Top Right Corner -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/logout"
+            android:textColor="@color/button_text_color"
+            android:backgroundTint="@color/card_stroke"
+            app:icon="@drawable/ic_logout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp" />
+
+        <!-- Form Fields Container -->
+        <LinearLayout
+            android:id="@+id/theform"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/background_color"
-            tools:context=".user_details.fragments.StudentDetailFragment">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/profile"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <!-- Profile Image -->
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
+                android:src="@drawable/ic_image_picker"
+                android:layout_marginBottom="16dp" />
 
+            <!-- Upload Profile Text -->
             <TextView
-                android:id="@+id/profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Profile"
-                android:textColor="@color/text_color"
-                android:textSize="26sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <LinearLayout
-                android:id="@+id/theform"
+                android:id="@+id/uppro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile">
+                android:text="@string/EnterProfile"
+                android:textAlignment="center"
+                android:textColor="@color/text_color"
+                android:textSize="18sp" />
+
+            <!-- Name Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Namelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/Name"
+                app:startIconDrawable="@drawable/ic_person"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/box_stroke_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:padding="12dp"
+                    android:text="@={user.name}"
+                    android:textColor="@color/text_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Age Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Agelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/Age"
+                app:startIconDrawable="@drawable/ic_calender"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/box_stroke_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:padding="12dp"
+                    android:text="@{String.valueOf(user.age)}"
+                    android:textColor="@color/text_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Phone Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Phonelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/Phone"
+                app:startIconDrawable="@drawable/ic_phone"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/box_stroke_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:padding="12dp"
+                    android:text="@={user.phone}"
+                    android:textColor="@color/text_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Email Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Emaillayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/Email"
+                app:startIconDrawable="@drawable/ic_email"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/box_stroke_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:padding="12dp"
+                    android:text="@={user.email}"
+                    android:textColor="@color/text_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Address Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addresslayoutr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/Address"
+                app:startIconDrawable="@drawable/ic_address"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/box_stroke_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:padding="12dp"
+                    android:text="@{user.address}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Skills Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/Skilllayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/Skill"
+                app:startIconDrawable="@drawable/ic_skill"
+                app:boxBackgroundMode="outline"
+                app:boxStrokeColor="@color/box_stroke_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/skill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:padding="12dp"
+                    android:text="@={user.skill}"
+                    android:textColor="@color/text_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Disability Type Spinner -->
+            <Spinner
+                android:id="@+id/disabilitySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:layout_marginTop="10dp" />
+
+            <!-- CV Upload Button & Preview -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/uploadCvButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    app:icon="@drawable/ic_file"
+                    app:iconTint="@color/icon_tint"
+                    app:iconGravity="textStart"
+                    app:backgroundTint="@color/background_color"
+                    app:strokeColor="@color/icon_tint"
+                    app:strokeWidth="1dp"
+                    android:text="@string/Upload_CV"
+                    android:textColor="@color/text_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/profileImage"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_image_picker" />
+                    android:id="@+id/pdfPreview"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:contentDescription="PDF Preview"
+                    android:src="@drawable/ic_pdf_placeholder"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/uploadCvButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="16dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/uppro"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/EnterProfile"
-                    android:textAlignment="center"
-                    android:textColor="@color/text_color"
-                    android:textSize="18sp" />
-
-                <!-- Name Input -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/Namelayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="@string/Name"
-                    android:textColorHint="@color/text_color"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/box_stroke_color"
-                    app:startIconDrawable="@drawable/ic_person">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/Name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:padding="12dp"
-                        android:text="@={user.name}"
-                        android:textColor="@color/text_color" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Age Input -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/Agelayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="@string/Age"
-                    android:textColorHint="@color/text_color"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/box_stroke_color"
-                    app:startIconDrawable="@drawable/ic_calender">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/age"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:padding="12dp"
-                        android:text="@{String.valueOf(user.age)}"
-                        android:textColor="@color/text_color" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Phone Input -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/Phonelayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="@string/Phone"
-                    android:textColorHint="@color/text_color"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/box_stroke_color"
-                    app:startIconDrawable="@drawable/ic_phone">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/phone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="phone"
-                        android:padding="12dp"
-                        android:text="@={user.phone}"
-                        android:textColor="@color/text_color" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Email Input -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/Emaillayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="@string/Email"
-                    android:textColorHint="@color/text_color"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/box_stroke_color"
-                    app:startIconDrawable="@drawable/ic_email">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/Email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress"
-                        android:padding="12dp"
-                        android:text="@={user.email}"
-                        android:textColor="@color/text_color" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Address Input -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/addresslayoutr"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="@string/Address"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/box_stroke_color"
-                    app:hintTextColor="@color/text_color"
-                    app:startIconDrawable="@drawable/ic_address">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/address"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textMultiLine"
-                        android:padding="12dp"
-                        android:text="@{user.address}" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Skills Input -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/Skilllayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="@string/Skill"
-                    android:textColorHint="@color/text_color"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/box_stroke_color"
-                    app:startIconDrawable="@drawable/ic_skill">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/skill"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:padding="12dp"
-                        android:text="@={user.skill}"
-                        android:textColor="@color/text_color" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Disability Type Input -->
-
-                <Spinner
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/disabilitySpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="48dp" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/uploadCvButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:padding="16dp"
-                        app:icon="@drawable/ic_file"
-                        app:iconTint="@color/icon_tint"
-                        app:iconGravity="textStart"
-                        app:backgroundTint="@color/background_color"
-                        app:strokeColor="@color/icon_tint"
-                        app:strokeWidth="1dp"
-                        android:text="@string/Upload_CV"
-                        android:textColor="@color/text_color"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/pdfPreview"
-                        android:layout_width="100dp"
-                        android:layout_height="150dp"
-                        android:contentDescription="PDF Preview"
-                        android:src="@drawable/ic_pdf_placeholder"
-                        android:visibility="gone"
-                        app:layout_constraintTop_toBottomOf="@id/uploadCvButton"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginTop="16dp" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/save"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:backgroundTint="@color/button_color"
-                    android:text="@string/updateProfile"
-                    android:textColor="@color/button_text_color" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/logout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/card_stroke"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/logout"
-                    android:textColor="@color/button_text_color" />
-
-            </LinearLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+            <!-- Save Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/button_color"
+                android:text="@string/updateProfile"
+                android:textColor="@color/button_text_color" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -39,6 +39,7 @@ class add_job : Fragment() {
         val jobDescription = binding.Jobdesc.text.toString().trim()
         val salary = binding.Salary.text.toString().trim()
         val location = binding.Location.text.toString().trim()
+        val wayContact= binding.Contact.text.toString().trim()
 
         // Get the company ID from FirebaseAuth
         val companyId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
@@ -51,7 +52,9 @@ class add_job : Fragment() {
                 jobdesc = jobDescription,
                 salary = salary,
                 location = location,
-                companyId = companyId // Associate the job with the company
+                companyId = companyId,
+                contact = wayContact
+            // Associate the job with the company
             )
 
             firestore.collection("jobData").add(jobData)
