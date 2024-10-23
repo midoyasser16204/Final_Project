@@ -1,9 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_company_info"
-        android:icon="@drawable/company_"
-        android:title="@string/Company" />
-    <item
         android:id="@+id/nav_job_seekers"
         android:icon="@drawable/job_seeker"
         android:title="@string/Job_Seeker" />
@@ -11,4 +7,8 @@
         android:id="@+id/nav_job"
         android:icon="@drawable/ic_jobs"
         android:title="@string/AddJob" />
+    <item
+        android:id="@+id/nav_company_info"
+        android:icon="@drawable/ic_person"
+        android:title="@string/Profile" />
 </menu>

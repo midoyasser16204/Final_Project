@@ -20,6 +20,7 @@
     <string name="Company">Company</string>
     <string name="Address">Address</string>
     <string name="Jobs">Jobs</string>
+    <string name="Contact">Contact</string>
     <string name="CompanyName">Company Name</string>
     <string name="RegistrationNumber">Registration Number</string>
     <string name="Location">Location</string>
@@ -32,6 +33,7 @@
     <string name="Details">Details</string>
     <string name="Cpdf">Click here to view the PDF</string>
     <string name="AddJob">Add Job</string>
+    <string name="User_Information">User Information</string>
     <string name="JobTitle">Job Title</string>
     <string name="JobDesc">Job Description</string>
     <string name="Salary">Salary</string>

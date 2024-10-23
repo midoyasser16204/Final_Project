@@ -27,11 +27,10 @@ class JobOfferFragment : Fragment() {
         binding = FragmentJobOfferBinding.inflate(inflater, container, false)
         firestore = FirebaseFirestore.getInstance()
 
-        jobAdapter = JobAdapter(
-            emptyList(),
-            onDetailClick = { jobData -> showDetail(jobData) },
-            onDeleteClick = { jobData -> deleteJob(jobData) }
-        )
+        // Initialize the JobDetailAdapter with an empty list and a detail click listener
+        jobAdapter = JobAdapter(emptyList()) { jobData ->
+            showDetail(jobData)
+        }
 
         binding.jobSeekerRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -49,7 +48,7 @@ class JobOfferFragment : Fragment() {
 
         if (currentCompanyId.isNotEmpty()) {
             firestore.collection("jobData")
-                .whereEqualTo("companyId", currentCompanyId) // Filter jobs by companyId
+                .whereEqualTo("companyId", currentCompanyId)
                 .get()
                 .addOnSuccessListener { documents ->
                     if (documents.isEmpty) {
@@ -58,17 +57,17 @@ class JobOfferFragment : Fragment() {
                         val jobs = documents.map {
                             it.toObject(JobData::class.java).apply { id = it.id }
                         }
-                        jobAdapter.updateData(jobs)
+                        jobAdapter.updateData(jobs) // Update the adapter with fetched job data
                     }
                 }
-                .addOnFailureListener {
+                .addOnFailureListener { exception ->
+                    Log.e("JobOfferFragment", "Error loading jobs: ", exception)
                     Toast.makeText(requireContext(), "Failed to load jobs", Toast.LENGTH_SHORT).show()
                 }
         } else {
             Toast.makeText(requireContext(), "Unable to load jobs, company ID not found", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     private fun showDetail(jobData: JobData) {
         val bundle = Bundle().apply { putString("jobId", jobData.id) }
@@ -77,16 +76,5 @@ class JobOfferFragment : Fragment() {
 
     private fun navigateToAddJobScreen() {
         findNavController().navigate(R.id.action_jobOfferFragment_to_add_job)
-    }
-
-    private fun deleteJob(jobData: JobData) {
-        firestore.collection("jobData").document(jobData.id).delete()
-            .addOnSuccessListener {
-                Toast.makeText(requireContext(), "Job deleted", Toast.LENGTH_SHORT).show()
-                loadJobData()
-            }
-            .addOnFailureListener {
-                Toast.makeText(requireContext(), "Failed to delete job", Toast.LENGTH_SHORT).show()
-            }
     }
 }

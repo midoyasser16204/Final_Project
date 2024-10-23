@@ -13,5 +13,13 @@
         android:id="@+id/find_job"
         android:name="com.example.myapplication.FindJobFragment"
         android:label="fragment_find_job"
-        tools:layout="@layout/fragment_find_job" />
+        tools:layout="@layout/fragment_find_job" >
+        <action
+            android:id="@+id/action_find_job_to_job_detail"
+            app:destination="@id/job_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/job_detail"
+        android:name="com.example.myapplication.job_detail"
+        android:label="job_detail" />
 </navigation>
