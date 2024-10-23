@@ -66,21 +66,18 @@ class SignIn : Fragment() {
             selectRole(cardCompany, cardJobSeeker)
         }
         binding.btnSignUp.setOnClickListener {
-
-
             navController.navigate(R.id.action_signIn_to_signUp)
         }
         binding.SignInButton.setOnClickListener {
             val email = binding.Email.text.toString().trim()
             val password = binding.Password.text.toString().trim()
 
-            if (email.isNotEmpty() && password.isNotEmpty()) {
+            if (isEmailValid(email) && password.isNotEmpty()) {
                 signInUser(email, password)
             } else {
-                Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), "Please enter a valid email ", Toast.LENGTH_SHORT)
                     .show()
             }
-
         }
 
         // Set up switch listener
@@ -90,14 +87,18 @@ class SignIn : Fragment() {
             (activity as? MainActivity)?.applyConfiguration(newLanguage)
             Log.d("LanguageSwitch", "Language changed to: $newLanguage")
         }
-
     }
-    private fun signInUser(email: String, password: String) {
 
+    private fun isEmailValid(email: String): Boolean {
+        // Regex pattern for validating email
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+        return email.matches(emailPattern.toRegex())
+    }
+
+    private fun signInUser(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-
-                    Toast.makeText(requireContext(), "Sign-Up Successful", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Sign-In Successful", Toast.LENGTH_SHORT).show()
                 if (selectRole == "joopSeeker") {
                     val intent = Intent(requireContext(), DisabilityActivity::class.java)
                     startActivity(intent)
@@ -107,12 +108,10 @@ class SignIn : Fragment() {
                     startActivity(intent)
                     requireActivity().finish()
                 }
-
-
             } else {
                 Toast.makeText(
                     requireContext(),
-                    "Sign-Up Failed: ${task.exception?.message}",
+                    "Sign-In Failed: ${task.exception?.message}",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -127,9 +126,5 @@ class SignIn : Fragment() {
             )
         )
         otherCard.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
-
-
     }
-
-
 }

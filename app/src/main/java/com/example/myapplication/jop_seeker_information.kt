@@ -84,8 +84,7 @@ class jop_seeker_information : Fragment() {
         setupButtons()
 
         binding.save.setOnClickListener { saveUserData()
-            val intent = Intent(requireActivity(), DisabilityActivity::class.java)
-            startActivity(intent)
+
 
 
         }
@@ -178,7 +177,8 @@ class jop_seeker_information : Fragment() {
         userDoc.set(dataMap)
             .addOnSuccessListener {
                 Toast.makeText(context, "تم حفظ البيانات بنجاح", Toast.LENGTH_SHORT).show()
-                findNavController().navigateUp()
+                val intent = Intent(requireActivity(), DisabilityActivity::class.java)
+                startActivity(intent)
             }
             .addOnFailureListener {
                 Toast.makeText(context, "فشل في حفظ البيانات", Toast.LENGTH_SHORT).show()

@@ -63,7 +63,7 @@ class jop_sekeer_profile : Fragment() {
     private fun fetchDataFromFirebase() {
         // Example: assuming collection is "users" and document is the userId
         val userId =
-            "9XqOaOzOWPSHQgkjsvDY8Od9AFS2"// replace with dynamic user ID if needed
+            firebaseAuth.currentUser?.uid ?: ""// replace with dynamic user ID if needed
 
         firestore.collection("disabilityData").document(userId)
             .get()
@@ -120,7 +120,7 @@ class jop_sekeer_profile : Fragment() {
         )
 
         // Example: assuming collection is "disabilityData" and document is the userId
-        val userId = "9XqOaOzOWPSHQgkjsvDY8Od9AFS2" // Replace with dynamic user ID if needed
+        val userId = firebaseAuth.currentUser?.uid ?: "" // Replace with dynamic user ID if needed
 
         // Update the data in Firestore
         firestore.collection("disabilityData").document(userId)
