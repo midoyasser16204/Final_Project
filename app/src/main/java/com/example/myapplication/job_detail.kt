@@ -12,7 +12,7 @@ import com.example.myapplication.data.model.JobData
 import com.example.myapplication.databinding.FragmentJobCardBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
-class JobDetailFragment : Fragment() {
+class job_detail : Fragment() {
 
     private lateinit var binding: FragmentJobCardBinding
     private lateinit var firestore: FirebaseFirestore

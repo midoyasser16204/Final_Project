@@ -213,18 +213,6 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-            <!-- Apply Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnApply"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/field_apply"
-                android:backgroundTint="@color/button_color"
-                android:textColor="@color/button_text_color"
-                android:textSize="16sp"
-                app:cornerRadius="6dp" />
-
         </LinearLayout>
     </ScrollView>
 </layout>
