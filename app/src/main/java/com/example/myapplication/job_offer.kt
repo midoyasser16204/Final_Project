@@ -28,9 +28,11 @@ class JobOfferFragment : Fragment() {
         firestore = FirebaseFirestore.getInstance()
 
         // Initialize the JobDetailAdapter with an empty list and a detail click listener
-        jobAdapter = JobAdapter(emptyList()) { jobData ->
+        jobAdapter = JobAdapter(emptyList(), { jobData ->
             showDetail(jobData)
-        }
+        }, { jobData ->
+            deleteJob(jobData)
+        })
 
         binding.jobSeekerRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -77,4 +79,17 @@ class JobOfferFragment : Fragment() {
     private fun navigateToAddJobScreen() {
         findNavController().navigate(R.id.action_jobOfferFragment_to_add_job)
     }
+
+    private fun deleteJob(jobData: JobData) {
+        firestore.collection("jobData").document(jobData.id).delete()
+            .addOnSuccessListener {
+                Toast.makeText(requireContext(), "Job deleted successfully", Toast.LENGTH_SHORT).show()
+                loadJobData() // Reload jobs after deletion
+            }
+            .addOnFailureListener { exception ->
+                Log.e("JobOfferFragment", "Error deleting job: ", exception)
+                Toast.makeText(requireContext(), "Failed to delete job", Toast.LENGTH_SHORT).show()
+            }
+    }
+
 }

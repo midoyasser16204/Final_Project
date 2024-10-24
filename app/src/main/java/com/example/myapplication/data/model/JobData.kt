@@ -1,6 +1,5 @@
 package com.example.myapplication.data.model
 
-import com.example.myapplication.databinding.ActivityCompanyBinding
 import java.io.Serializable
 
 data class JobData(
